@@ -22,8 +22,9 @@ void SierpinskiCarpet::drawSierpinskiCarpet(const sf::Vector2f &topLeftPoint, co
         height = std::abs(bottomRightPoint.y - topLeftPoint.y);
       sf::RectangleShape rect = sf::RectangleShape(sf::Vector2f(width, height));
         
-      R = 255 - (1.0*bottomRightPoint.x)/widthWin*255;
-      G = 255 - (1.0*bottomRightPoint.y)/widthWin*255;
+        //Color
+      R = 255 - (1.0*bottomRightPoint.y)/widthWin*255;
+      G = 255 - (1.0*bottomRightPoint.x)/widthWin*255;
       B = (R + G)/2;
       sf::Color color = sf::Color(R, G, B);
       rect.setFillColor(color);
