@@ -1,11 +1,8 @@
-exec.out: main.o arbolFractal.o trianguloSierpinski.o alfombraSierpinski.o renderer.o copoKoch.o
+exec.out: main.o trianguloSierpinski.o alfombraSierpinski.o renderer.o copoKoch.o
 	g++ *.o -o exec.out -lsfml-graphics -lsfml-window -lsfml-system -std=c++11
 
 main.o: main.cpp
 	g++ -std=c++11 -c main.cpp
-
-arbolFractal.o: arbolFractal.cpp Headers/arbolFractal.h
-	g++ -std=c++11 -c arbolFractal.cpp
 
 copoKoch.o: copoKoch.cpp Headers/copoKoch.h
 	g++ -std=c++11 -c copoKoch.cpp

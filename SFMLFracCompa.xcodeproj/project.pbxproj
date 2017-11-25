@@ -10,7 +10,6 @@
 		4448A8291FCA0EB5000E666D /* copoKoch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4448A8241FCA0EB4000E666D /* copoKoch.cpp */; };
 		4448A82A1FCA0EB5000E666D /* trianguloSierpinski.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4448A8251FCA0EB5000E666D /* trianguloSierpinski.cpp */; };
 		4448A82B1FCA0EB5000E666D /* alfombraSierpinski.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4448A8261FCA0EB5000E666D /* alfombraSierpinski.cpp */; };
-		4448A82C1FCA0EB5000E666D /* arbolFractal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4448A8271FCA0EB5000E666D /* arbolFractal.cpp */; };
 		4448A82D1FCA0EB5000E666D /* renderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4448A8281FCA0EB5000E666D /* renderer.cpp */; };
 		445A2B4B1FC9D660000460F1 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 445A2B4A1FC9D660000460F1 /* main.cpp */; };
 		445A2B5D1FC9D6E1000460F1 /* libsfml-system.2.4.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 445A2B581FC9D6E1000460F1 /* libsfml-system.2.4.2.dylib */; };
@@ -37,7 +36,6 @@
 		4448A8241FCA0EB4000E666D /* copoKoch.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = copoKoch.cpp; sourceTree = "<group>"; };
 		4448A8251FCA0EB5000E666D /* trianguloSierpinski.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = trianguloSierpinski.cpp; sourceTree = "<group>"; };
 		4448A8261FCA0EB5000E666D /* alfombraSierpinski.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = alfombraSierpinski.cpp; sourceTree = "<group>"; };
-		4448A8271FCA0EB5000E666D /* arbolFractal.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = arbolFractal.cpp; sourceTree = "<group>"; };
 		4448A8281FCA0EB5000E666D /* renderer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = renderer.cpp; sourceTree = "<group>"; };
 		4448A82E1FCA10A8000E666D /* Headers */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Headers; sourceTree = "<group>"; };
 		445A2B471FC9D660000460F1 /* SFMLFracCompa */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SFMLFracCompa; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,7 +91,6 @@
 				4448A82E1FCA10A8000E666D /* Headers */,
 				445A2B621FC9E9F2000460F1 /* Roboto-Light.ttf */,
 				445A2B4A1FC9D660000460F1 /* main.cpp */,
-				4448A8271FCA0EB5000E666D /* arbolFractal.cpp */,
 				4448A8241FCA0EB4000E666D /* copoKoch.cpp */,
 				4448A8281FCA0EB5000E666D /* renderer.cpp */,
 				4448A8261FCA0EB5000E666D /* alfombraSierpinski.cpp */,
@@ -177,7 +174,6 @@
 				4448A8291FCA0EB5000E666D /* copoKoch.cpp in Sources */,
 				4448A82A1FCA0EB5000E666D /* trianguloSierpinski.cpp in Sources */,
 				44F882AE1FCA1C3000F4F8DB /* Makefile in Sources */,
-				4448A82C1FCA0EB5000E666D /* arbolFractal.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
