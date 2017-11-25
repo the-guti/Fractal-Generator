@@ -56,12 +56,3 @@ void SierpinskiCarpet::drawSierpinskiCarpet(const sf::Vector2f &topLeftPoint, co
       drawSierpinskiCarpet(newTopLeft, newBottomRight, currentIteration+1, window, slow);
     }
 }
-void SierpinskiCarpet::setBoundingBox(float x1, float y1, float x2, float y2){
-  m_boundingBox = sf::RectangleShape();
-  m_boundingBox.setPosition(sf::Vector2f(x1, y1));
-  m_boundingBox.setSize(sf::Vector2f(x2 - x1, y2 - y1));
-}
-
-sf::RectangleShape SierpinskiCarpet::getBoundingBox() const{
-  return m_boundingBox;
-}
