@@ -9,22 +9,21 @@
 #include "renderer.h"
 class SierpinskiCarpet{
 public:
-  SierpinskiCarpet(int it);
-  ~SierpinskiCarpet();
+    //Constructor recibe num de iteraciones, tam de donde se va a desplegar
+    SierpinskiCarpet(int it, int x, int y);
+    ~SierpinskiCarpet();
 
-  void setBoundingBox(float x1, float y1, float x2, float y2);
-  sf::RectangleShape getBoundingBox() const;
-  /*
-   *  Recursively calls itself for the top, left and right subtriangle and draws the final iteration
-   */
-  void drawSierpinskiCarpet(const sf::Vector2f &topLeftPoint, const sf::Vector2f &bottomRightPoint,
+    void setBoundingBox(float x1, float y1, float x2, float y2);
+    sf::RectangleShape getBoundingBox() const;
+
+    //Funcion principal, crea el fractal de forma recursiva
+    void drawSierpinskiCarpet(const sf::Vector2f &topLeftPoint, const sf::Vector2f &bottomRightPoint,
                       int iteration, sf::RenderWindow &window, bool slow);
     //Funcion de "preparación" que llama a sierpinski draw y genera sus argumentos
   void Render(sf::RenderWindow& window);
 
 private:
     sf::RectangleShape m_boundingBox;
-    int numIt;
-    sf::Color m_color;
+    int numIt,widthWin,heightWin;
 };
 #endif

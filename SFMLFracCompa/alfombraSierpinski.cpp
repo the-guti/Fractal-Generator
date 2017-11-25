@@ -1,20 +1,17 @@
 #include "Headers/alfombraSierpinski.h"
 
 //Constructor y Destructor
-SierpinskiCarpet::SierpinskiCarpet(int it){
+SierpinskiCarpet::SierpinskiCarpet(int it, int x, int y){
     numIt = it; //Se asignan numero de iteraciones a realizar a la clase
+    widthWin = x;
+    heightWin = y;
 }
 
 SierpinskiCarpet::~SierpinskiCarpet(){}
 
 void SierpinskiCarpet::Render(sf::RenderWindow& window){
-  sf::Vector2f bottomRightPoint = sf::Vector2f(0 + m_boundingBox.getSize().x, 0 + m_boundingBox.getSize().y);
-  sf::Vector2f topLeftPoint = sf::Vector2f(0,0);
-
-    drawSierpinskiCarpet(topLeftPoint, bottomRightPoint, 0, window, false);
+    drawSierpinskiCarpet(sf::Vector2f(0, 0), sf::Vector2f(widthWin, heightWin), 0, window, false);
 }
-
-
 
 void SierpinskiCarpet::drawSierpinskiCarpet(const sf::Vector2f &topLeftPoint, const sf::Vector2f &bottomRightPoint,
   int currentIteration, sf::RenderWindow &window, bool slow){
@@ -24,11 +21,13 @@ void SierpinskiCarpet::drawSierpinskiCarpet(const sf::Vector2f &topLeftPoint, co
         width  = std::abs(bottomRightPoint.x - topLeftPoint.x);
         height = std::abs(bottomRightPoint.y - topLeftPoint.y);
       sf::RectangleShape rect = sf::RectangleShape(sf::Vector2f(width, height));
-      R = 255 - (1.0*bottomRightPoint.x)/m_boundingBox.getSize().x*255;
-      G = 255 - (1.0*bottomRightPoint.y)/m_boundingBox.getSize().x*255;
+        
+      R = 255 - (1.0*bottomRightPoint.x)/widthWin*255;
+      G = 255 - (1.0*bottomRightPoint.y)/widthWin*255;
       B = (R + G)/2;
       sf::Color color = sf::Color(R, G, B);
       rect.setFillColor(color);
+        
       rect.setPosition(topLeftPoint);
         if(slow){
             window.clear();

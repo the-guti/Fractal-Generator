@@ -14,7 +14,6 @@ int main(){
     sf::RenderWindow window(sf::VideoMode(WIDTH, HEIGHT), "JuanVentana");
     //sf::Vector2f previousMousePosition;// for calculating the distance between the mouse button click location and release location, for mandelbrot movement
     int frac = 2,it = 4; //Var de fractal a elegir y Varaible de num de it a realizar
-    std::cout << frac;
     printf("----- Favor de elegir Fractal a mostrar -----\n");
     printf("   Fractales  Triangulo S= 0; Copo de Nieve Koch = 1; Alfombra S = 2; Alfombra Invertida = 3 \n");
 
@@ -72,16 +71,15 @@ int main(){
             case 2:{
                 window.setTitle("Alfombra Sierpinski");
 
-                SierpinskiCarpet sc = SierpinskiCarpet(it);
-                sc.setBoundingBox(0, 0, WIDTH, HEIGHT);
+                SierpinskiCarpet sc = SierpinskiCarpet(it,WIDTH,HEIGHT);
+                //sc.setBoundingBox(0, 0, WIDTH, HEIGHT);
                 sc.Render(window);
                 break;
             }
             case 3:{//Implement
                 window.setTitle("Alfombra Invertida Sierpinski");
                 
-                SierpinskiCarpet sc = SierpinskiCarpet(it);
-                sc.setBoundingBox(0, 0, WIDTH, HEIGHT);
+                SierpinskiCarpet sc = SierpinskiCarpet(it,WIDTH,HEIGHT);
                 sc.Render(window);
                 break;
             }
