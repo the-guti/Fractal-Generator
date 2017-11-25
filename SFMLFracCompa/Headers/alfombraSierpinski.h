@@ -11,7 +11,7 @@ public:
     SierpinskiCarpet(int it, int x, int y);
     ~SierpinskiCarpet();
     //Funcion principal, crea el fractal de forma recursiva
-    void drawSierpinskiCarpet(const sf::Vector2f &topLeftPoint, const sf::Vector2f &bottomRightPoint,int iteration, sf::RenderWindow &window, bool slow);
+    void drawSierpinskiCarpet(const sf::Vector2f &topLeftPoint, const sf::Vector2f &bottomRightPoint,int iteration, sf::RenderWindow &window, bool slow, bool inverse);
     //Funcion de "preparación" que llama a sierpinski draw y genera sus argumentos
   void Render(sf::RenderWindow& window);
 };

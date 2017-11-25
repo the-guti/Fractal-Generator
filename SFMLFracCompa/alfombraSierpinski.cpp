@@ -10,11 +10,10 @@ SierpinskiCarpet::SierpinskiCarpet(int it, int x, int y){
 SierpinskiCarpet::~SierpinskiCarpet(){}
 
 void SierpinskiCarpet::Render(sf::RenderWindow& window){
-    drawSierpinskiCarpet(sf::Vector2f(0, 0), sf::Vector2f(widthWin, heightWin), 0, window, false);
+    drawSierpinskiCarpet(sf::Vector2f(0, 0), sf::Vector2f(widthWin, heightWin), 0, window, false, false);
 }
 
-void SierpinskiCarpet::drawSierpinskiCarpet(const sf::Vector2f &topLeftPoint, const sf::Vector2f &bottomRightPoint,
-  int currentIteration, sf::RenderWindow &window, bool slow){
+void SierpinskiCarpet::drawSierpinskiCarpet(const sf::Vector2f &topLeftPoint, const sf::Vector2f &bottomRightPoint, int currentIteration, sf::RenderWindow &window, bool slow, bool inverse){
     float width, height;
     int R,G,B;
     if(currentIteration == numIt){
@@ -41,18 +40,22 @@ void SierpinskiCarpet::drawSierpinskiCarpet(const sf::Vector2f &topLeftPoint, co
       return;
     }
     for(int i = 0; i < 9; i++){
-        if(i==4){//Salta el 5to cuadro porque es el vacio
-            continue;//De regreso al principio loop papa
+        if(inverse){//Inversa
+            if(i != 4){//Salta todos excepto el 5to cuadro porque es la inversa
+                continue;
+            }
+        }else{//No inversa
+            if(i==4){//Salta el 5to cuadro porque es el vacio
+                continue;//De regreso al principio loop papa
+            }
         }
-        
         width = std::abs(bottomRightPoint.x - topLeftPoint.x)/3;
         height= std::abs(bottomRightPoint.y - topLeftPoint.y)/3;
         int ii = i % 3;
         int ij = i / 3;
-
-      sf::Vector2f newTopLeft = sf::Vector2f(topLeftPoint.x + (ii*width), topLeftPoint.y + ij*height);
-      sf::Vector2f newBottomRight = sf::Vector2f(topLeftPoint.x + (ii+1)*width, topLeftPoint.y + (ij+1)*height);
-
-      drawSierpinskiCarpet(newTopLeft, newBottomRight, currentIteration+1, window, slow);
+        
+        sf::Vector2f newTopLeft = sf::Vector2f(topLeftPoint.x + (ii*width), topLeftPoint.y + ij*height);
+        sf::Vector2f newBottomRight = sf::Vector2f(topLeftPoint.x + (ii+1)*width, topLeftPoint.y + (ij+1)*height);
+        drawSierpinskiCarpet(newTopLeft, newBottomRight, currentIteration+1, window, slow, inverse);
     }
 }
