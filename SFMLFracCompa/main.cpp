@@ -71,16 +71,13 @@ int main(){
             case 2:{
                 window.setTitle("Alfombra Sierpinski");
 
-                SierpinskiCarpet sc = SierpinskiCarpet(it,WIDTH,HEIGHT);
-                //sc.setBoundingBox(0, 0, WIDTH, HEIGHT);
-                sc.Render(window);
+                SierpinskiCarpet sc = SierpinskiCarpet(window,it,WIDTH,HEIGHT);
                 break;
             }
             case 3:{//Implement
                 window.setTitle("Alfombra Invertida Sierpinski");
-                
-                SierpinskiCarpet sc = SierpinskiCarpet(it,WIDTH,HEIGHT);
-                sc.Render(window);
+                SierpinskiCarpet sc = SierpinskiCarpet(window,it,WIDTH,HEIGHT);
+
                 break;
             }
             default:

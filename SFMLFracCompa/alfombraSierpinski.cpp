@@ -1,17 +1,14 @@
 #include "Headers/alfombraSierpinski.h"
 
 //Constructor y Destructor
-SierpinskiCarpet::SierpinskiCarpet(int it, int x, int y){
+SierpinskiCarpet::SierpinskiCarpet(sf::RenderWindow& window, int it, int x, int y){
     numIt = it; //Se asignan numero de iteraciones a realizar a la clase
     widthWin = x;
     heightWin = y;
+    drawSierpinskiCarpet(sf::Vector2f(0, 0),sf::Vector2f(widthWin, heightWin), 0, window, false);
 }
 
 SierpinskiCarpet::~SierpinskiCarpet(){}
-
-void SierpinskiCarpet::Render(sf::RenderWindow& window){
-    drawSierpinskiCarpet(sf::Vector2f(0, 0), sf::Vector2f(widthWin, heightWin), 0, window, false);
-}
 
 void SierpinskiCarpet::drawSierpinskiCarpet(const sf::Vector2f &topLeftPoint, const sf::Vector2f &bottomRightPoint, int currentIteration, sf::RenderWindow &window, bool slow){
     float width, height;
