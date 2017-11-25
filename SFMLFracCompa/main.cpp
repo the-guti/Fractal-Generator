@@ -13,7 +13,7 @@
 int main(){
     sf::RenderWindow window(sf::VideoMode(WIDTH, HEIGHT), "JuanVentana");
     //sf::Vector2f previousMousePosition;// for calculating the distance between the mouse button click location and release location, for mandelbrot movement
-    int frac = 2,it = 4; //Var de fractal a elegir y Varaible de num de it a realizar
+    int frac = 0,it = 4; //Var de fractal a elegir y Varaible de num de it a realizar
     printf("----- Favor de elegir Fractal a mostrar -----\n");
     printf("   Fractales  Triangulo S= 0; Copo de Nieve Koch = 1; Alfombra S = 2; Alfombra Invertida = 3 \n");
 
@@ -70,18 +70,17 @@ int main(){
             }
             case 2:{
                 window.setTitle("Alfombra Sierpinski");
-
                 SierpinskiCarpet sc = SierpinskiCarpet(window,it,WIDTH,HEIGHT);
                 break;
             }
-            case 3:{//Implement
+            case 3:{//Implement "soon"
                 window.setTitle("Alfombra Invertida Sierpinski");
                 SierpinskiCarpet sc = SierpinskiCarpet(window,it,WIDTH,HEIGHT);
 
                 break;
             }
             default:
-                
+                printf("No se eligio un tamaño correcto");
                 break;
         }//END SWITCH
         window.display();

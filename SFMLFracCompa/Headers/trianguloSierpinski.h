@@ -2,12 +2,8 @@
 #define TRIANGULOSIERPINSKI_H
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include <stdlib.h>
 #include <cmath>
-#include <vector>
-#include <algorithm>
 #include "renderer.h"
-
 
 class SierpinskiTriangle
 {
