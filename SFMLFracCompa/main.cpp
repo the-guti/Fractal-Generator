@@ -56,7 +56,6 @@ int main(){
                 SierpinskiTriangle st = SierpinskiTriangle();
                 st.setBoundingBox(0, 0, WIDTH, HEIGHT);
                 st.setNumberOfIterations(it);
-                st.setColor(sf::Color::Red);
                 st.Render(window);
                 break;
             }

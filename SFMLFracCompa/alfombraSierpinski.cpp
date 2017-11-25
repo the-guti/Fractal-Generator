@@ -17,8 +17,7 @@ void SierpinskiCarpet::Render(sf::RenderWindow& window){
 
 
 void SierpinskiCarpet::drawSierpinskiCarpet(const sf::Vector2f &topLeftPoint, const sf::Vector2f &bottomRightPoint,
-  int currentIteration, sf::RenderWindow &window, bool slow)
-{
+  int currentIteration, sf::RenderWindow &window, bool slow){
     float width, height;
     int R,G,B;
     if(currentIteration == numIt){
@@ -56,17 +55,6 @@ void SierpinskiCarpet::drawSierpinskiCarpet(const sf::Vector2f &topLeftPoint, co
 
       drawSierpinskiCarpet(newTopLeft, newBottomRight, currentIteration+1, window, slow);
     }
-}
-
-void SierpinskiCarpet::setBoundingBox(const sf::RectangleShape& newBoundingBox){
-  m_boundingBox = sf::RectangleShape(newBoundingBox);
-}
-
-void SierpinskiCarpet::setBoundingBox(const sf::Vector2f& topLeft, const sf::Vector2f& bottomRight)
-{
-  m_boundingBox = sf::RectangleShape();
-  m_boundingBox.setPosition(topLeft);
-  m_boundingBox.setSize(sf::Vector2f(bottomRight.x-topLeft.x, bottomRight.y-topLeft.y));
 }
 void SierpinskiCarpet::setBoundingBox(float x1, float y1, float x2, float y2){
   m_boundingBox = sf::RectangleShape();

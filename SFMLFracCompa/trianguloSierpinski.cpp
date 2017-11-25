@@ -3,8 +3,7 @@
 SierpinskiTriangle::SierpinskiTriangle(){}
 SierpinskiTriangle::~SierpinskiTriangle(){}
 
-void SierpinskiTriangle::Render(sf::RenderWindow& window)
-{
+void SierpinskiTriangle::Render(sf::RenderWindow& window){
   sf::Vector2f bottomRightPoint = sf::Vector2f(m_boundingBox.getPosition().x + m_boundingBox.getSize().x, m_boundingBox.getPosition().y + m_boundingBox.getSize().y);
   sf::Vector2f topLeftPoint = sf::Vector2f(m_boundingBox.getPosition());
   sf::Vector2f top = sf::Vector2f((bottomRightPoint.x + topLeftPoint.x)/2.0, topLeftPoint.y);
@@ -81,14 +80,4 @@ void SierpinskiTriangle::setBoundingBox(float x1, float y1, float x2, float y2)
 sf::RectangleShape SierpinskiTriangle::getBoundingBox() const
 {
   return m_boundingBox;
-}
-
-void SierpinskiTriangle::setColor(const sf::Color& newColor)
-{
-  m_color = sf::Color(newColor);
-}
-
-sf::Color SierpinskiTriangle::getColor() const
-{
-  return m_color;
 }

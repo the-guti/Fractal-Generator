@@ -7,14 +7,11 @@
 #include <vector>
 #include <algorithm>
 #include "renderer.h"
-
 class SierpinskiCarpet{
 public:
   SierpinskiCarpet(int it);
   ~SierpinskiCarpet();
 
-  void setBoundingBox(const sf::RectangleShape& newBoundingBox);
-  void setBoundingBox(const sf::Vector2f& topLeft, const sf::Vector2f& bottomRight);
   void setBoundingBox(float x1, float y1, float x2, float y2);
   sf::RectangleShape getBoundingBox() const;
   /*

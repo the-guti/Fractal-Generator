@@ -21,11 +21,6 @@ public:
   void setBoundingBox(const sf::Vector2f& topLeft, const sf::Vector2f& bottomRight);
   void setBoundingBox(float x1, float y1, float x2, float y2);
   sf::RectangleShape getBoundingBox() const;
-
-  void setColor(const sf::Color& newColor);
-  sf::Color getColor() const;
-
-
   /*
    *  Recursively calls itself for the top, left and right subtriangle and draws the final iteration
    */
@@ -37,6 +32,5 @@ public:
 private:
   sf::RectangleShape m_boundingBox;
   int m_numberOfIterations;
-  sf::Color m_color;
 };
 #endif
