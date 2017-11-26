@@ -3,7 +3,6 @@
 #include <iostream>
 #include <chrono>   //Medicion de tiempo
 #include <fstream>  //Crear y escribir en archivos
-#include <time.h>    //Tiempo
 
 //Headers
 #include "Headers/renderer.h"
@@ -64,8 +63,6 @@ int main(){
             switch (frac) {
                 case 0:{
                     window.setTitle("Triangulo Sierpinski");
-                    time_t tiempo;   // get time now
-                    time(&tiempo);
                     tiempoInicio =  std::chrono::high_resolution_clock::now();
                     SierpinskiTriangle st(window, it,0,0, WIDTH,HEIGHT);
                     tiempoFinal =  std::chrono::high_resolution_clock::now();
@@ -73,14 +70,10 @@ int main(){
                     
                     archivoSalida.open("TrianguloSierpinskiEstadisticas.csv",std::ios_base::app);
                     if (archivoSalida.is_open()){
-                        archivoSalida << "Iteracion,";
-                        archivoSalida << "Tiempo(milisegundos),";
-                        archivoSalida << "Calculado el,";
-                        archivoSalida << ctime(&tiempo);
-                        archivoSalida << "\n";
                         archivoSalida << it;
                         archivoSalida << ",";
                         archivoSalida << time_span.count();
+                        archivoSalida << "\n";
                         archivoSalida.close();
                     }
             
