@@ -71,8 +71,13 @@ void CuadradoSierpinski::drawCuadradoSierpinski(const sf::Vector2f &reference_po
         
         ang_actual = 90.00 * (M_PI/180);
         double radius_2;
-        //radius_2 = radius - (radius * 0.00001);
-        radius_2 = radius - (radius * 0.45);
+        if(invertido){
+            radius_2 = radius - (radius * 0.00001);
+        } else {
+            radius_2 = radius - (radius * 0.45);
+        }
+        
+        
         
         sf::Vector2f center0 = sf::Vector2f(centro.x + radius_2*cos(ang_actual), centro.y - radius_2*sin(ang_actual));
         
@@ -86,8 +91,14 @@ void CuadradoSierpinski::drawCuadradoSierpinski(const sf::Vector2f &reference_po
         sf::Vector2f center3 = sf::Vector2f(radius_2*cos(ang_actual) + centro.x, -(radius_2*sin(ang_actual)) + centro.y);
         
         ang_actual = 90.00 * (M_PI/180);
-        //double radius_3 = radius * 0.49999;
-        double radius_3 = radius * 0.45;
+        double radius_3;
+        if(invertido){
+            radius_3 = radius * 0.49999;
+        } else {
+            radius_3 = radius * 0.45;
+        }
+        
+        
         
         sf::ConvexShape convex0,convex1, convex2, convex3, convex4;
         sf::Color color = sf::Color(reference_point.y/m_boundingBox.getSize().y*255, 0, window.getSize().x/m_boundingBox.getSize().x*255);

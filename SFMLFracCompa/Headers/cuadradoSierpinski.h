@@ -15,6 +15,7 @@ class CuadradoSierpinski
 {
 public:
     CuadradoSierpinski();
+    bool invertido;
     void setNumberOfIterations(int newNumberOfIterations);
     int getNumberOfIterations() const;
     

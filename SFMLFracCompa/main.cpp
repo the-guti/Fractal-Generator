@@ -145,10 +145,15 @@ int main(){
                     std::cout << "Tiempo de ejecucion: " << time_span.count()  << " milisegundos\n";
                     break;
                 }
+                case 33:{
+                    
+                    break;
+                }
                 case 4:{
                     window.setTitle("Cuadrado Sierpinski");
                     tiempoInicio =  std::chrono::high_resolution_clock::now();
                     CuadradoSierpinski s4 = CuadradoSierpinski();
+                    s4.invertido = false;
                     s4.setBoundingBox(0, 0, WIDTH, HEIGHT);
                     s4.setNumberOfIterations(it);
                     s4.setColor(sf::Color::Red);
@@ -157,6 +162,29 @@ int main(){
                     time_span = std::chrono::duration_cast<std::chrono::duration<double>>((tiempoFinal - tiempoInicio)*1000);
                     
                     archivoSalida.open("CuadradoSierpinskiEstadisticas.csv",std::ios_base::app);
+                    if (archivoSalida.is_open()){
+                        archivoSalida << it;
+                        archivoSalida << ",";
+                        archivoSalida << time_span.count();
+                        archivoSalida << "\n";
+                        archivoSalida.close();
+                    }
+                    std::cout << "Tiempo de ejecucion: " << time_span.count()  << " milisegundos\n";
+                    break;
+                }
+                case 44:{
+                    window.setTitle("Cuadrado Sierpinski Invertido");
+                    tiempoInicio =  std::chrono::high_resolution_clock::now();
+                    CuadradoSierpinski s4 = CuadradoSierpinski();
+                    s4.invertido = true;
+                    s4.setBoundingBox(0, 0, WIDTH, HEIGHT);
+                    s4.setNumberOfIterations(it);
+                    s4.setColor(sf::Color::Red);
+                    s4.Render(window);
+                    tiempoFinal =  std::chrono::high_resolution_clock::now();
+                    time_span = std::chrono::duration_cast<std::chrono::duration<double>>((tiempoFinal - tiempoInicio)*1000);
+                    
+                    archivoSalida.open("CuadradoSierpinskiInvEstadisticas.csv",std::ios_base::app);
                     if (archivoSalida.is_open()){
                         archivoSalida << it;
                         archivoSalida << ",";
