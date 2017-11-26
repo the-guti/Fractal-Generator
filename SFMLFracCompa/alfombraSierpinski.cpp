@@ -1,17 +1,18 @@
 #include "Headers/alfombraSierpinski.h"
 
-//Constructor y Destructor
-AlfombraSierpinski::AlfombraSierpinski(sf::RenderWindow& window, int it, int x, int y, bool inv){
+//Constructor
+AlfombraSierpinski::AlfombraSierpinski(sf::RenderWindow& window, int it, int x, int y, bool slow, bool inv){
     numIt = it; //Se asignan numero de iteraciones a realizar a la clase
     widthWin = x;
     heightWin = y;
     invertido = inv;
-    drawAlfombraSierpinski(sf::Vector2f(0, 0),sf::Vector2f(widthWin, heightWin), 0, window, false);
+    this->slow = slow;
+    std::vector<sf::RectangleShape> vec;
+    vec.clear();
+    drawAlfombraSierpinski(sf::Vector2f(0, 0),sf::Vector2f(widthWin, heightWin), 0, window);
 }
 
-
-
-void AlfombraSierpinski::drawAlfombraSierpinski(const sf::Vector2f &topLeftPoint, const sf::Vector2f &bottomRightPoint, int currentIteration, sf::RenderWindow &window, bool slow){
+void AlfombraSierpinski::drawAlfombraSierpinski(const sf::Vector2f &topLeftPoint, const sf::Vector2f &bottomRightPoint, int currentIteration, sf::RenderWindow &window){
     float width, height;
     int R,G,B;
     if(currentIteration == numIt){
@@ -29,8 +30,10 @@ void AlfombraSierpinski::drawAlfombraSierpinski(const sf::Vector2f &topLeftPoint
       rect.setPosition(topLeftPoint);
         if(slow){
             window.clear();
-            window.draw(rect);
-            //window.setFramerateLimit(1);
+            vec.push_back(rect);
+            for(int i = 0;vec.size()>i ;i++){
+                window.draw(vec[i]);
+            }
             window.display();
         }else{
             window.draw(rect);
@@ -38,8 +41,7 @@ void AlfombraSierpinski::drawAlfombraSierpinski(const sf::Vector2f &topLeftPoint
       return;
     }
     for(int i = 0; i < 9; i++){
-        if(invertido)
-        {
+        if(invertido){
             // FALTA IMPLEMENTAR
         } else {
             if(i==4){//Salta el 5to cuadro porque es el vacio
@@ -52,7 +54,7 @@ void AlfombraSierpinski::drawAlfombraSierpinski(const sf::Vector2f &topLeftPoint
             
             sf::Vector2f newTopLeft = sf::Vector2f(topLeftPoint.x + (ii*width), topLeftPoint.y + ij*height);
             sf::Vector2f newBottomRight = sf::Vector2f(topLeftPoint.x + (ii+1)*width, topLeftPoint.y + (ij+1)*height);
-            drawAlfombraSierpinski(newTopLeft, newBottomRight, currentIteration+1, window, slow);
+            drawAlfombraSierpinski(newTopLeft, newBottomRight, currentIteration+1, window);
         }
         
     }
