@@ -3,7 +3,7 @@
 
 
 PentagonoSierpinski::PentagonoSierpinski(){}
-PentagonoSierpinski::~PentagonoSierpinski(){}
+
 
 void PentagonoSierpinski::Render(sf::RenderWindow& window) //OBTIENE UN RENDERWINDOW
 {   /*ESTA FUNCIÓN OBTIENE LOS PARÁMETROS PARA ENCONTRAR LAS DIMENSIONES DE LOS PUNTOS
@@ -43,6 +43,7 @@ void PentagonoSierpinski::drawPentagonoSierpinski(const sf::Vector2f &reference_
         sf::Color color = sf::Color(reference_point.y/m_boundingBox.getSize().y*255, 0, window.getSize().x/m_boundingBox.getSize().x*255);
         
         sf::ConvexShape convex;
+        convex.setFillColor(color);
         convex.setPointCount(5);
         convex.setPoint(0,reference_point);
         
@@ -70,6 +71,7 @@ void PentagonoSierpinski::drawPentagonoSierpinski(const sf::Vector2f &reference_
     }
     else
     {
+        
         ang_actual = 90.00 * (M_PI/180);
         double radius_2;
         
@@ -102,6 +104,16 @@ void PentagonoSierpinski::drawPentagonoSierpinski(const sf::Vector2f &reference_
         //double radius_3 = radius * (0.4999); //RADIO PARA CRECIMIENTO LOCO
         
         sf::ConvexShape convex0,convex1, convex2, convex3, convex4;
+        
+        sf::Color color = sf::Color(reference_point.y/m_boundingBox.getSize().y*255, 0, window.getSize().x/m_boundingBox.getSize().x*255);
+        
+        
+        convex0.setFillColor(color);
+        convex1.setFillColor(color);
+        convex2.setFillColor(color);
+        convex3.setFillColor(color);
+        convex4.setFillColor(color);
+        
         convex0.setPointCount(5);
         convex1.setPointCount(5);
         convex2.setPointCount(5);

@@ -15,7 +15,6 @@ class PentagonoSierpinski
 {
 public:
     PentagonoSierpinski();
-    ~PentagonoSierpinski();
     void setNumberOfIterations(int newNumberOfIterations);
     int getNumberOfIterations() const;
     

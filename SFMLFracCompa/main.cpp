@@ -15,7 +15,7 @@
 #include "Headers/octagonoSierpinski.h"
 #include "Headers/nonagonoSierpinski.h"
 #include "Headers/decagonoSierpinski.h"
-
+//
 
 #define WIDTH 720
 #define HEIGHT 720
