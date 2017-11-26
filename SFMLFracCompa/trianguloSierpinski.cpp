@@ -1,7 +1,12 @@
 #include "Headers/trianguloSierpinski.h"
 //Constructor
 SierpinskiTriangle::SierpinskiTriangle(sf::RenderWindow& window, int it, int x, int y, int width, int height){
-    
+    iterations = it;
+    this->width = width;
+    this->height = height;
+    this->x = x;
+    this->y = y;
+
     sf::Vector2f bottomRightPoint = sf::Vector2f(x + width, y + height);
     sf::Vector2f topLeftPoint = sf::Vector2f(x,y);
     
