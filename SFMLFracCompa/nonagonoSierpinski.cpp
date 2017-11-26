@@ -78,9 +78,7 @@ void NonagonoSierpinski::drawNonagonoSierpinski(const sf::Vector2f &reference_po
         const sf::Vector2f point8 = sf::Vector2f(radius * cos(ang_actual) + centro.x, -(radius * sin(ang_actual)) + centro.y);
         convex.setPoint(8,point8);
         
-        ang_actual += incremento_ang;
-        const sf::Vector2f point9 = sf::Vector2f(radius * cos(ang_actual) + centro.x, -(radius * sin(ang_actual)) + centro.y);
-        convex.setPoint(9,point9);
+        
         
         window.draw(convex);
         return;
@@ -121,8 +119,6 @@ void NonagonoSierpinski::drawNonagonoSierpinski(const sf::Vector2f &reference_po
         ang_actual += incremento_ang;
         sf::Vector2f center8 = sf::Vector2f(radius_2*cos(ang_actual) + centro.x, -(radius_2*sin(ang_actual)) + centro.y);
         
-        ang_actual += incremento_ang;
-        sf::Vector2f center9 = sf::Vector2f(radius_2*cos(ang_actual) + centro.x, -(radius_2*sin(ang_actual)) + centro.y);
         
         
         
@@ -132,16 +128,15 @@ void NonagonoSierpinski::drawNonagonoSierpinski(const sf::Vector2f &reference_po
         double radius_3 = radius * (0.25);
         
         sf::ConvexShape convex0,convex1, convex2, convex3, convex4, convex5, convex6, convex7, convex8, convex9;
-        convex0.setPointCount(10);
-        convex1.setPointCount(10);
-        convex2.setPointCount(10);
-        convex3.setPointCount(10);
-        convex4.setPointCount(10);
-        convex5.setPointCount(10);
-        convex6.setPointCount(10);
-        convex7.setPointCount(10);
-        convex8.setPointCount(10);
-        convex9.setPointCount(10);
+        convex0.setPointCount(9);
+        convex1.setPointCount(9);
+        convex2.setPointCount(9);
+        convex3.setPointCount(9);
+        convex4.setPointCount(9);
+        convex5.setPointCount(9);
+        convex6.setPointCount(9);
+        convex7.setPointCount(9);
+        convex8.setPointCount(9);
         
         
         //PUNTOS SUPERIORES
@@ -163,8 +158,7 @@ void NonagonoSierpinski::drawNonagonoSierpinski(const sf::Vector2f &reference_po
         convex7.setPoint(0, point0_7);
         const sf::Vector2f point0_8 = sf::Vector2f(radius_3*cos(ang_actual) + center8.x,-(radius_3*sin(ang_actual)) + center8.y);
         convex8.setPoint(0, point0_8);
-        const sf::Vector2f point0_9 = sf::Vector2f(radius_3*cos(ang_actual) + center9.x,-(radius_3*sin(ang_actual)) + center9.y);
-        convex6.setPoint(0, point0_9);
+        
         
         
         
@@ -187,8 +181,7 @@ void NonagonoSierpinski::drawNonagonoSierpinski(const sf::Vector2f &reference_po
         convex7.setPoint(1, point1_7);
         const sf::Vector2f point1_8 = sf::Vector2f(radius_3*cos(ang_actual) + center8.x,-(radius_3*sin(ang_actual)) + center8.y);
         convex8.setPoint(1, point1_8);
-        const sf::Vector2f point1_9 = sf::Vector2f(radius_3*cos(ang_actual) + center9.x,-(radius_3*sin(ang_actual)) + center9.y);
-        convex9.setPoint(1, point1_9);
+        
         
         
         
@@ -211,8 +204,7 @@ void NonagonoSierpinski::drawNonagonoSierpinski(const sf::Vector2f &reference_po
         convex7.setPoint(2, point2_7);
         const sf::Vector2f point2_8 = sf::Vector2f(radius_3*cos(ang_actual) + center8.x,-(radius_3*sin(ang_actual)) + center8.y);
         convex8.setPoint(2, point2_8);
-        const sf::Vector2f point2_9 = sf::Vector2f(radius_3*cos(ang_actual) + center9.x,-(radius_3*sin(ang_actual)) + center9.y);
-        convex9.setPoint(2, point2_9);
+        
         
         
         
@@ -236,8 +228,7 @@ void NonagonoSierpinski::drawNonagonoSierpinski(const sf::Vector2f &reference_po
         convex7.setPoint(3, point3_7);
         const sf::Vector2f point3_8 = sf::Vector2f(radius_3*cos(ang_actual) + center8.x,-(radius_3*sin(ang_actual)) + center8.y);
         convex8.setPoint(3, point3_8);
-        const sf::Vector2f point3_9 = sf::Vector2f(radius_3*cos(ang_actual) + center9.x,-(radius_3*sin(ang_actual)) + center9.y);
-        convex9.setPoint(3, point3_9);
+        
         
         
         
@@ -261,8 +252,7 @@ void NonagonoSierpinski::drawNonagonoSierpinski(const sf::Vector2f &reference_po
         convex7.setPoint(4, point4_7);
         const sf::Vector2f point4_8 = sf::Vector2f(radius_3*cos(ang_actual) + center8.x,-(radius_3*sin(ang_actual)) + center8.y);
         convex8.setPoint(4, point4_8);
-        const sf::Vector2f point4_9 = sf::Vector2f(radius_3*cos(ang_actual) + center9.x,-(radius_3*sin(ang_actual)) + center9.y);
-        convex9.setPoint(4, point4_9);
+        
         
         
         
@@ -285,8 +275,7 @@ void NonagonoSierpinski::drawNonagonoSierpinski(const sf::Vector2f &reference_po
         convex7.setPoint(5, point5_7);
         const sf::Vector2f point5_8 = sf::Vector2f(radius_3*cos(ang_actual) + center8.x,-(radius_3*sin(ang_actual)) + center8.y);
         convex8.setPoint(5, point5_8);
-        const sf::Vector2f point5_9 = sf::Vector2f(radius_3*cos(ang_actual) + center9.x,-(radius_3*sin(ang_actual)) + center9.y);
-        convex9.setPoint(5, point5_9);
+        
         
         
         
@@ -309,8 +298,6 @@ void NonagonoSierpinski::drawNonagonoSierpinski(const sf::Vector2f &reference_po
         convex7.setPoint(6, point6_7);
         const sf::Vector2f point6_8 = sf::Vector2f(radius_3*cos(ang_actual) + center8.x,-(radius_3*sin(ang_actual)) + center8.y);
         convex8.setPoint(6, point6_8);
-        const sf::Vector2f point6_9 = sf::Vector2f(radius_3*cos(ang_actual) + center9.x,-(radius_3*sin(ang_actual)) + center9.y);
-        convex9.setPoint(6, point6_9);
         
         
         
@@ -333,8 +320,7 @@ void NonagonoSierpinski::drawNonagonoSierpinski(const sf::Vector2f &reference_po
         convex7.setPoint(7, point7_7);
         const sf::Vector2f point7_8 = sf::Vector2f(radius_3*cos(ang_actual) + center8.x,-(radius_3*sin(ang_actual)) + center8.y);
         convex8.setPoint(7, point7_8);
-        const sf::Vector2f point7_9 = sf::Vector2f(radius_3*cos(ang_actual) + center9.x,-(radius_3*sin(ang_actual)) + center9.y);
-        convex9.setPoint(7, point7_9);
+        
         
         
         
@@ -358,32 +344,12 @@ void NonagonoSierpinski::drawNonagonoSierpinski(const sf::Vector2f &reference_po
         convex7.setPoint(8, point8_7);
         const sf::Vector2f point8_8 = sf::Vector2f(radius_3*cos(ang_actual) + center8.x,-(radius_3*sin(ang_actual)) + center8.y);
         convex8.setPoint(8, point8_8);
-        const sf::Vector2f point8_9 = sf::Vector2f(radius_3*cos(ang_actual) + center9.x,-(radius_3*sin(ang_actual)) + center9.y);
-        convex9.setPoint(8, point8_9);
         
         
         
-        ang_actual += incremento_ang;
-        const sf::Vector2f point9_0 = sf::Vector2f(radius_3*cos(ang_actual) + center0.x,-(radius_3*sin(ang_actual)) + center0.y);
-        convex0.setPoint(9, point9_0);
-        const sf::Vector2f point9_1 = sf::Vector2f(radius_3*cos(ang_actual) + center1.x,-(radius_3*sin(ang_actual)) + center1.y);
-        convex1.setPoint(9, point9_1);
-        const sf::Vector2f point9_2 = sf::Vector2f(radius_3*cos(ang_actual) + center2.x,-(radius_3*sin(ang_actual)) + center2.y);
-        convex2.setPoint(9, point9_2);
-        const sf::Vector2f point9_3 = sf::Vector2f(radius_3*cos(ang_actual) + center3.x,-(radius_3*sin(ang_actual)) + center3.y);
-        convex3.setPoint(9, point9_3);
-        const sf::Vector2f point9_4 = sf::Vector2f(radius_3*cos(ang_actual) + center4.x,-(radius_3*sin(ang_actual)) + center4.y);
-        convex4.setPoint(9, point9_4);
-        const sf::Vector2f point9_5 = sf::Vector2f(radius_3*cos(ang_actual) + center5.x,-(radius_3*sin(ang_actual)) + center5.y);
-        convex5.setPoint(9, point9_5);
-        const sf::Vector2f point9_6 = sf::Vector2f(radius_3*cos(ang_actual) + center6.x,-(radius_3*sin(ang_actual)) + center6.y);
-        convex6.setPoint(9, point9_6);
-        const sf::Vector2f point9_7 = sf::Vector2f(radius_3*cos(ang_actual) + center7.x,-(radius_3*sin(ang_actual)) + center7.y);
-        convex7.setPoint(9, point9_7);
-        const sf::Vector2f point9_8 = sf::Vector2f(radius_3*cos(ang_actual) + center8.x,-(radius_3*sin(ang_actual)) + center8.y);
-        convex8.setPoint(9, point9_8);
-        const sf::Vector2f point9_9 = sf::Vector2f(radius_3*cos(ang_actual) + center9.x,-(radius_3*sin(ang_actual)) + center9.y);
-        convex9.setPoint(9, point9_9);
+        
+        
+        
         
         
         
@@ -415,7 +381,7 @@ void NonagonoSierpinski::drawNonagonoSierpinski(const sf::Vector2f &reference_po
             drawNonagonoSierpinski(point0_6, center6, radius_3, ang_actual, incremento_ang, iteration+1, window);
             drawNonagonoSierpinski(point0_7, center7, radius_3, ang_actual, incremento_ang, iteration+1, window);
             drawNonagonoSierpinski(point0_8, center8, radius_3, ang_actual, incremento_ang, iteration+1, window);
-            drawNonagonoSierpinski(point0_9, center9, radius_3, ang_actual, incremento_ang, iteration+1, window);
+            
             
         }
     }
