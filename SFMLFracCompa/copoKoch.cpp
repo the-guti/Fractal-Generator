@@ -2,6 +2,14 @@
 #include <iostream>
 
 void CopoKoch::Render(sf::RenderWindow& window){
+    
+    //Color
+//    int R,G,B;
+//    R = 255 - (1.0*window.getSize())/window.getSize()*255;
+//    G = 255 - (1.0*bottomRightPoint.x)/widthWin*255;
+//    B = (R + G)/2;
+    sf::Color color = sf::Color(100, 50, 150);
+    
   sf::Vector2f topLeft = m_boundingBox.getPosition();
   sf::Vector2f bottomRight = sf::Vector2f(m_boundingBox.getPosition().x + m_boundingBox.getSize().x, m_boundingBox.getPosition().y + m_boundingBox.getSize().y);
 
@@ -13,7 +21,7 @@ void CopoKoch::Render(sf::RenderWindow& window){
   sf::Vector2f top = TopPoint(left, right);
 
   if(m_numberOfIterations == 0){
-    drawTriangle(top, left, right, m_color, window);
+    drawTriangle(top, left, right, color, window);
   }else{
     if(m_inverted){
       drawCopoKoch(right, left, 1, m_inverted, window);
@@ -22,7 +30,7 @@ void CopoKoch::Render(sf::RenderWindow& window){
     }
     else
     {
-      drawTriangle(top, left, right, m_color, window);
+      drawTriangle(top, left, right, color, window);
       drawCopoKoch(left, right, 1, m_inverted, window);
       drawCopoKoch(top, left, 1, m_inverted, window);
       drawCopoKoch(right, top, 1, m_inverted, window);
@@ -33,13 +41,14 @@ void CopoKoch::Render(sf::RenderWindow& window){
 void CopoKoch::drawCopoKoch(sf::Vector2f pointA, sf::Vector2f pointB,
    int currentIteration, bool inverted, sf::RenderWindow& window)
 {
+  sf::Color color = sf::Color(100, 50, 150);
   if(currentIteration == m_numberOfIterations)
   {
     // Draw the final iteration triangles, 10 lines below the logic is explained
     sf::Vector2f a = sf::Vector2f(ONE_THIRD * (pointA.x - pointB.x) + pointB.x, ONE_THIRD * (pointA.y - pointB.y) + pointB.y);
     sf::Vector2f b = sf::Vector2f(TWO_THIRDS * (pointA.x - pointB.x) + pointB.x, TWO_THIRDS * (pointA.y - pointB.y) + pointB.y);
     sf::Vector2f c = TopPoint(a, b);
-    drawTriangle(a, b, c, m_color, window);
+    drawTriangle(a, b, c, color, window);
     return;
   }
   else
@@ -54,7 +63,7 @@ void CopoKoch::drawCopoKoch(sf::Vector2f pointA, sf::Vector2f pointB,
     sf::Vector2f c = TopPoint(b, a);
 
     if(!inverted)
-      drawTriangle(a, b, c, m_color, window);
+      drawTriangle(a, b, c, color, window);
 
     // and recursively call the same function for all the newly created sides
     drawCopoKoch(pointA, a, currentIteration+1, inverted, window);

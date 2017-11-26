@@ -21,7 +21,7 @@
 #define HEIGHT 720
 
 int main(){
-    sf::RenderWindow window(sf::VideoMode(WIDTH, HEIGHT), "JuanVentana");
+    sf::RenderWindow window(sf::VideoMode(WIDTH, HEIGHT), "");
     
     //Variables a inicializar
     int frac = 3,it = 4; //Fractal a elegir y num de it a realizar
