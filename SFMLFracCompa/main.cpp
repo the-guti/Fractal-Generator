@@ -1,7 +1,9 @@
 //Librerias y Dependencias
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include <chrono>
+#include <chrono>   //Medicion de tiempo
+#include <fstream>  //Crear y escribir en archivos
+#include <ctime>    //Tiempo
 
 //Headers
 #include "Headers/renderer.h"
@@ -26,6 +28,7 @@ int main(){
     std::chrono::high_resolution_clock::time_point tiempoInicio,tiempoFinal;
     std::chrono::duration<double> time_span;
     bool recalculate = true;
+    std::ofstream archivoSalida;
     
     printf("----- Favor de elegir Fractal a mostrar -----\n");
     printf("   Fractales  Triangulo S= 0; Copo de Nieve Koch = 1; Alfombra S = 2; Alfombra Invertida = 3 \n");
@@ -61,18 +64,38 @@ int main(){
             switch (frac) {
                 case 0:{
                     window.setTitle("Triangulo Sierpinski");
+                    time_t tiempo = time(0);   // get time now
                     tiempoInicio =  std::chrono::high_resolution_clock::now();
                     SierpinskiTriangle st(window, it,0,0, WIDTH,HEIGHT);
                     tiempoFinal =  std::chrono::high_resolution_clock::now();
-                    time_span = std::chrono::duration_cast<std::chrono::duration<double> >(tiempoFinal - tiempoInicio);
+                    time_span = std::chrono::duration_cast<std::chrono::duration<double>>((tiempoFinal - tiempoInicio)*1000);
                     
-                    std::cout << "Tiempo de ejecucion: " << time_span.count()  << "seconds";
+                    archivoSalida.open("TrianguloSierpinskiEstadisticas.csv");
+                    if (archivoSalida.is_open(),std::ios_base::app){
+                        printf("gen");
+                        archivoSalida << "Iteracion,";
+                        archivoSalida << "Tiempo(milisegundos),";
+                        archivoSalida << "Calculado el,";
+                        archivoSalida << tiempo;
+                        archivoSalida << "\n";
+                        archivoSalida << it;
+                        archivoSalida << ",";
+                        archivoSalida << time_span.count();
+                        archivoSalida.close();
+                    }
+            
+                    std::cout << "Tiempo de ejecucion: " << time_span.count()  << "milisegundos";
                     break;
                 }
                 case 1:{
                     window.setTitle("Copo de Nieve Koch");
-                    
+                    tiempoInicio =  std::chrono::high_resolution_clock::now();
                     KochSnowflake ks = KochSnowflake();
+                    
+                    tiempoFinal =  std::chrono::high_resolution_clock::now();
+                    time_span = std::chrono::duration_cast<std::chrono::duration<double>>((tiempoFinal - tiempoInicio)*1000);
+                    std::cout << "Tiempo de ejecucion: " << time_span.count()  << "milisegundos";
+                
                     ks.setBoundingBox(0, 0, WIDTH, HEIGHT);
                     ks.setNumberOfIterations(it);
                     ks.setColor(sf::Color::Red);
@@ -82,7 +105,13 @@ int main(){
                 }
                 case 2:{
                     window.setTitle("Alfombra Sierpinski");
+                    tiempoInicio =  std::chrono::high_resolution_clock::now();
                     SierpinskiCarpet as(window,it,WIDTH, HEIGHT);
+                    
+                    tiempoFinal =  std::chrono::high_resolution_clock::now();
+                    time_span = std::chrono::duration_cast<std::chrono::duration<double>>((tiempoFinal - tiempoInicio)*1000);
+                    std::cout << "Tiempo de ejecucion: " << time_span.count()  << "milisegundos";
+                    
                     break;
                 }
                 case 3:{//Implement "soon"
