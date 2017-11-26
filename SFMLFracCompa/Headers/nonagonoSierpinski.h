@@ -9,7 +9,7 @@
 #include <cmath>
 #include <vector>
 #include <algorithm>
-#include "Renderer.h"
+#include "renderer.h"
 
 class NonagonoSierpinski
 {
