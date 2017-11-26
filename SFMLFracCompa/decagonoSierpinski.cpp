@@ -94,7 +94,7 @@ void DecagonoSierpinski::drawDecagonoSierpinski(const sf::Vector2f &reference_po
         double radius_2;
         //radius_2 = radius - (radius * (0.01));
         //radius_2 = radius - (radius * (1/3.42));
-        radius_2 = radius - (radius * (0.25));
+        radius_2 = radius - (radius * (0.238));
         sf::Vector2f center0 = sf::Vector2f(radius_2*cos(ang_actual) + centro.x, - radius_2*sin(ang_actual) + centro.y);
         
         ang_actual += incremento_ang;
@@ -129,7 +129,7 @@ void DecagonoSierpinski::drawDecagonoSierpinski(const sf::Vector2f &reference_po
         ang_actual = 90.00 * (M_PI/180);
         //double radius_3 = radius * (0.49);
         //double radius_3 = radius * (1/3.42);
-        double radius_3 = radius * (0.25);
+        double radius_3 = radius * (0.238);
         
         sf::ConvexShape convex0,convex1, convex2, convex3, convex4, convex5, convex6, convex7, convex8, convex9;
         convex0.setPointCount(10);
@@ -400,7 +400,7 @@ void DecagonoSierpinski::drawDecagonoSierpinski(const sf::Vector2f &reference_po
             window.draw(convex6);
             window.draw(convex7);
             window.draw(convex8);
-            //window.draw(convex9);
+            window.draw(convex9);
             
         }
         else
