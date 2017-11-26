@@ -46,12 +46,14 @@ int main(){
                 }
             }
         }
-        
         window.clear();//Default color Black
+        SierpinskiTriangle st(window, it,300,0, 300,300);
+        SierpinskiCarpet as(window,it,300, 300);
+        /*
         switch (frac) {
             case 0:{
                 window.setTitle("Triangulo Sierpinski");
-                SierpinskiTriangle st(window, it,0,0, WIDTH,HEIGHT);
+                SierpinskiTriangle st(window, it,300,0, 300,300);
                 break;
             }
             case 1:{
@@ -80,6 +82,7 @@ int main(){
                 printf("No se eligio un tamaño correcto");
                 break;
         }//END SWITCH
+         */
         window.display();
     }//END WHILE
     return 0;
