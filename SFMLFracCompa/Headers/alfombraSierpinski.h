@@ -7,7 +7,7 @@ class SierpinskiCarpet{
 private:
     int numIt,widthWin,heightWin;
 public:
-    //Constructor recibe num de iteraciones, tam de donde se va a desplegar
+    //Constructor recibe num de iteraciones, tamb de donde se va a desplegar
     SierpinskiCarpet(sf::RenderWindow &window,int it, int x, int y);
     ~SierpinskiCarpet();
     //Funcion principal, crea el fractal de forma recursiva

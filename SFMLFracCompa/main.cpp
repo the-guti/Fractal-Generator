@@ -16,13 +16,13 @@ int main(){
     int frac = 0,it = 4; //Var de fractal a elegir y Varaible de num de it a realizar
     printf("----- Favor de elegir Fractal a mostrar -----\n");
     printf("   Fractales  Triangulo S= 0; Copo de Nieve Koch = 1; Alfombra S = 2; Alfombra Invertida = 3 \n");
-
     //std::cin >> frac;
     
     printf("Favor de introducir numero de iteraciones \n");
     //std::cin >> it;
-    window.clear();
     while (window.isOpen()){
+        window.clear();//Limpia ventana antes de empezar
+
         sf::Event event;
         
         //Aqui van inputs
@@ -51,10 +51,7 @@ int main(){
         switch (frac) {
             case 0:{
                 window.setTitle("Triangulo Sierpinski");
-                SierpinskiTriangle st = SierpinskiTriangle();
-                st.setBoundingBox(0, 0, WIDTH, HEIGHT);
-                st.setNumberOfIterations(it);
-                st.Render(window);
+                SierpinskiTriangle st(window, it,0,0, WIDTH,HEIGHT);
                 break;
             }
             case 1:{
@@ -70,12 +67,12 @@ int main(){
             }
             case 2:{
                 window.setTitle("Alfombra Sierpinski");
-                SierpinskiCarpet sc = SierpinskiCarpet(window,it,WIDTH,HEIGHT);
+                SierpinskiCarpet as(window,it,WIDTH, HEIGHT);
                 break;
             }
             case 3:{//Implement "soon"
                 window.setTitle("Alfombra Invertida Sierpinski");
-                SierpinskiCarpet sc = SierpinskiCarpet(window,it,WIDTH,HEIGHT);
+                SierpinskiCarpet asI(window,it,WIDTH,HEIGHT);
 
                 break;
             }
