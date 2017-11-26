@@ -9,7 +9,6 @@
 #include <cmath>
 #include "renderer.h"
 
-
 float TriangleHeight(sf::Vector2f& pointA, sf::Vector2f& pointB);
 sf::Vector2f CenterPoint(sf::Vector2f& pointA, sf::Vector2f& pointB);
 sf::Vector2f TopPoint(sf::Vector2f& pointA, sf::Vector2f& pointB);
