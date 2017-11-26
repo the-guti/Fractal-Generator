@@ -164,7 +164,8 @@ void DecagonoSierpinski::drawDecagonoSierpinski(const sf::Vector2f &reference_po
         const sf::Vector2f point0_8 = sf::Vector2f(radius_3*cos(ang_actual) + center8.x,-(radius_3*sin(ang_actual)) + center8.y);
         convex8.setPoint(0, point0_8);
         const sf::Vector2f point0_9 = sf::Vector2f(radius_3*cos(ang_actual) + center9.x,-(radius_3*sin(ang_actual)) + center9.y);
-        convex6.setPoint(0, point0_9);
+        convex9.setPoint(0, point0_9);
+
         
         
         
