@@ -11,6 +11,7 @@
 #include "Headers/hexagonoSierpinski.h"
 #include "Headers/heptagonoSierpinski.h"
 #include "Headers/octagonoSierpinski.h"
+#include "Headers/nonagonoSierpinski.h"
 #include "Headers/decagonoSierpinski.h"
 
 
@@ -136,7 +137,12 @@ int main(){
                 break;
             }
             case 9:{
-                
+                window.setTitle("Nonagono Sierpinski");
+                NonagonoSierpinski s9 = NonagonoSierpinski();
+                s9.setBoundingBox(0, 0, WIDTH, HEIGHT);
+                s9.setNumberOfIterations(it);
+                s9.setColor(sf::Color::Red);
+                s9.Render(window);
                 break;
             }
             case 10:{
