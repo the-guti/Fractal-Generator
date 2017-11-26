@@ -1,14 +1,10 @@
 #include "Headers/copoKoch.h"
 #include <iostream>
 
-void KochSnowflake::Render(sf::RenderWindow& window){
+void CopoKoch::Render(sf::RenderWindow& window){
   sf::Vector2f topLeft = m_boundingBox.getPosition();
   sf::Vector2f bottomRight = sf::Vector2f(m_boundingBox.getPosition().x + m_boundingBox.getSize().x, m_boundingBox.getPosition().y + m_boundingBox.getSize().y);
 
-  /*
-   * Since we want the entire snowflake to fit within the bounding box, the base of the main
-   * triangle has to be smaller than the edge of the bounding box
-   */
   float oneThirdWidth = (bottomRight.x - topLeft.x)/6;
   float oneThirdHeight = (bottomRight.y - topLeft.y)/6;
 
@@ -20,22 +16,21 @@ void KochSnowflake::Render(sf::RenderWindow& window){
     drawTriangle(top, left, right, m_color, window);
   }else{
     if(m_inverted){
-      // We call the following functions for all 3 sides of the triangle
-      drawKochSnowflake(right, left, 1, m_inverted, window);
-      drawKochSnowflake(left, top, 1, m_inverted, window);
-      drawKochSnowflake(top, right, 1, m_inverted, window);
+      drawCopoKoch(right, left, 1, m_inverted, window);
+      drawCopoKoch(left, top, 1, m_inverted, window);
+      drawCopoKoch(top, right, 1, m_inverted, window);
     }
     else
     {
       drawTriangle(top, left, right, m_color, window);
-      drawKochSnowflake(left, right, 1, m_inverted, window);
-      drawKochSnowflake(top, left, 1, m_inverted, window);
-      drawKochSnowflake(right, top, 1, m_inverted, window);
+      drawCopoKoch(left, right, 1, m_inverted, window);
+      drawCopoKoch(top, left, 1, m_inverted, window);
+      drawCopoKoch(right, top, 1, m_inverted, window);
     }
   }
 }
 
-void KochSnowflake::drawKochSnowflake(sf::Vector2f pointA, sf::Vector2f pointB,
+void CopoKoch::drawCopoKoch(sf::Vector2f pointA, sf::Vector2f pointB,
    int currentIteration, bool inverted, sf::RenderWindow& window)
 {
   if(currentIteration == m_numberOfIterations)
@@ -62,10 +57,10 @@ void KochSnowflake::drawKochSnowflake(sf::Vector2f pointA, sf::Vector2f pointB,
       drawTriangle(a, b, c, m_color, window);
 
     // and recursively call the same function for all the newly created sides
-    drawKochSnowflake(pointA, a, currentIteration+1, inverted, window);
-    drawKochSnowflake(b, pointB, currentIteration+1, inverted, window);
-    drawKochSnowflake(a, c, currentIteration+1, inverted, window);
-    drawKochSnowflake(c, b, currentIteration+1, inverted, window);
+    drawCopoKoch(pointA, a, currentIteration+1, inverted, window);
+    drawCopoKoch(b, pointB, currentIteration+1, inverted, window);
+    drawCopoKoch(a, c, currentIteration+1, inverted, window);
+    drawCopoKoch(c, b, currentIteration+1, inverted, window);
   }
 }
 
@@ -111,54 +106,54 @@ sf::Vector2f TopPoint(sf::Vector2f& pointA, sf::Vector2f& pointB)
   return sf::Vector2f(center.x + ABVector.x*h, center.y + ABVector.y*h);
 }
 
-void KochSnowflake::setNumberOfIterations(int newNumberOfIterations)
+void CopoKoch::setNumberOfIterations(int newNumberOfIterations)
 {
   m_numberOfIterations = newNumberOfIterations;
 }
 
-int KochSnowflake::getNumberOfIterations() const
+int CopoKoch::getNumberOfIterations() const
 {
   return m_numberOfIterations;
 }
 
-void KochSnowflake::setBoundingBox(const sf::RectangleShape& newBoundingBox)
+void CopoKoch::setBoundingBox(const sf::RectangleShape& newBoundingBox)
 {
   m_boundingBox = sf::RectangleShape(newBoundingBox);
 }
-void KochSnowflake::setBoundingBox(const sf::Vector2f& topLeft, const sf::Vector2f& bottomRight)
+void CopoKoch::setBoundingBox(const sf::Vector2f& topLeft, const sf::Vector2f& bottomRight)
 {
   m_boundingBox = sf::RectangleShape();
   m_boundingBox.setPosition(topLeft);
   m_boundingBox.setSize(sf::Vector2f(bottomRight.x-topLeft.x, bottomRight.y-topLeft.y));
 }
-void KochSnowflake::setBoundingBox(float x1, float y1, float x2, float y2)
+void CopoKoch::setBoundingBox(float x1, float y1, float x2, float y2)
 {
   m_boundingBox = sf::RectangleShape();
   m_boundingBox.setPosition(sf::Vector2f(x1, y1));
   m_boundingBox.setSize(sf::Vector2f(x2 - x1, y2 - y1));
 }
 
-sf::RectangleShape KochSnowflake::getBoundingBox() const
+sf::RectangleShape CopoKoch::getBoundingBox() const
 {
   return m_boundingBox;
 }
 
-void KochSnowflake::setColor(const sf::Color& newColor)
+void CopoKoch::setColor(const sf::Color& newColor)
 {
   m_color = sf::Color(newColor);
 }
 
-sf::Color KochSnowflake::getColor() const
+sf::Color CopoKoch::getColor() const
 {
   return m_color;
 }
 
 
-void KochSnowflake::setInverted(bool newInverted)
+void CopoKoch::setInverted(bool newInverted)
 {
   m_inverted = newInverted;
 }
-bool KochSnowflake::getInverted() const
+bool CopoKoch::getInverted() const
 {
   return m_inverted;
 }

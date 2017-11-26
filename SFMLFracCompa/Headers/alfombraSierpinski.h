@@ -3,14 +3,14 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <cmath>
-class SierpinskiCarpet{
+class AlfombraSierpinski{
 private:
     int numIt,widthWin,heightWin;
+    bool invertido;
 public:
     //Constructor recibe num de iteraciones, tamb de donde se va a desplegar
-    SierpinskiCarpet(sf::RenderWindow &window,int it, int x, int y);
-    ~SierpinskiCarpet();
+    AlfombraSierpinski(sf::RenderWindow &window,int it, int x, int y, bool invertido);
     //Funcion principal, crea el fractal de forma recursiva
-    void drawSierpinskiCarpet(const sf::Vector2f &topLeftPoint, const sf::Vector2f &bottomRightPoint,int iteration, sf::RenderWindow &window, bool slow);
+    void drawAlfombraSierpinski(const sf::Vector2f &topLeftPoint, const sf::Vector2f &bottomRightPoint,int iteration, sf::RenderWindow &window, bool slow);
 };
 #endif

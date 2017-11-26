@@ -1,6 +1,6 @@
 #include "Headers/trianguloSierpinski.h"
 //Constructor
-SierpinskiTriangle::SierpinskiTriangle(sf::RenderWindow& window, int it, int x, int y, int width, int height){
+TrianguloSierpinski::TrianguloSierpinski(sf::RenderWindow& window, int it, int x, int y, int width, int height){
     iterations = it;
     this->width = width;
     this->height = height;
@@ -14,10 +14,10 @@ SierpinskiTriangle::SierpinskiTriangle(sf::RenderWindow& window, int it, int x, 
     sf::Vector2f left = sf::Vector2f(topLeftPoint.x, bottomRightPoint.y);
     sf::Vector2f right = sf::Vector2f(bottomRightPoint.x, bottomRightPoint.y);
     
-    drawSierpinskiTriangle(window, top, left, right, -1);
+    drawTrianguloSierpinski(window, top, left, right, -1);
 }
 
-void SierpinskiTriangle::drawSierpinskiTriangle(sf::RenderWindow &window, const sf::Vector2f &top, const sf::Vector2f &left, const sf::Vector2f &right, int currentIteration){
+void TrianguloSierpinski::drawTrianguloSierpinski(sf::RenderWindow &window, const sf::Vector2f &top, const sf::Vector2f &left, const sf::Vector2f &right, int currentIteration){
     
     if(iterations == 0){//Caso Base
         sf::Color color = sf::Color(top.y/height*255, 0, right.x/width*255);
@@ -41,9 +41,9 @@ void SierpinskiTriangle::drawSierpinskiTriangle(sf::RenderWindow &window, const 
           color = sf::Color(midRight.y/height*255, 0, midRight.x/width*255);
           drawTriangle(midRight, midBottom, right, color, window);
         }else{
-            drawSierpinskiTriangle(window, top, midLeft, midRight, currentIteration+1);
-            drawSierpinskiTriangle(window, midLeft, left, midBottom, currentIteration+1);
-            drawSierpinskiTriangle(window, midRight, midBottom, right, currentIteration+1);
+            drawTrianguloSierpinski(window, top, midLeft, midRight, currentIteration+1);
+            drawTrianguloSierpinski(window, midLeft, left, midBottom, currentIteration+1);
+            drawTrianguloSierpinski(window, midRight, midBottom, right, currentIteration+1);
         }
       }
 }
