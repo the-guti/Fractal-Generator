@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		282D623F1FCB3BD500CF8C53 /* pentagonoSierpinski.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 282D623E1FCB3BD500CF8C53 /* pentagonoSierpinski.cpp */; };
+		282D62421FCB4C8900CF8C53 /* cuadradoSierpinski.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 282D62411FCB4C8900CF8C53 /* cuadradoSierpinski.cpp */; };
+		282D62451FCB4E3100CF8C53 /* hexagonoSierpinski.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 282D62441FCB4E3100CF8C53 /* hexagonoSierpinski.cpp */; };
+		282D62481FCB500B00CF8C53 /* heptagonoSierpinski.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 282D62471FCB500B00CF8C53 /* heptagonoSierpinski.cpp */; };
+		282D624B1FCB528600CF8C53 /* octagonoSierpinski.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 282D624A1FCB528600CF8C53 /* octagonoSierpinski.cpp */; };
+		282D624E1FCB550700CF8C53 /* decagonoSierpinski.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 282D624D1FCB550700CF8C53 /* decagonoSierpinski.cpp */; };
+		282D62511FCB5A3900CF8C53 /* nonagonoSierpinski.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 282D62501FCB5A3900CF8C53 /* nonagonoSierpinski.cpp */; };
 		4448A8291FCA0EB5000E666D /* copoKoch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4448A8241FCA0EB4000E666D /* copoKoch.cpp */; };
 		4448A82A1FCA0EB5000E666D /* trianguloSierpinski.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4448A8251FCA0EB5000E666D /* trianguloSierpinski.cpp */; };
 		4448A82B1FCA0EB5000E666D /* alfombraSierpinski.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4448A8261FCA0EB5000E666D /* alfombraSierpinski.cpp */; };
@@ -33,6 +40,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		282D623E1FCB3BD500CF8C53 /* pentagonoSierpinski.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = pentagonoSierpinski.cpp; sourceTree = "<group>"; };
+		282D62411FCB4C8900CF8C53 /* cuadradoSierpinski.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = cuadradoSierpinski.cpp; sourceTree = "<group>"; };
+		282D62441FCB4E3100CF8C53 /* hexagonoSierpinski.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = hexagonoSierpinski.cpp; sourceTree = "<group>"; };
+		282D62471FCB500B00CF8C53 /* heptagonoSierpinski.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = heptagonoSierpinski.cpp; sourceTree = "<group>"; };
+		282D624A1FCB528600CF8C53 /* octagonoSierpinski.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = octagonoSierpinski.cpp; sourceTree = "<group>"; };
+		282D624D1FCB550700CF8C53 /* decagonoSierpinski.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = decagonoSierpinski.cpp; sourceTree = "<group>"; };
+		282D62501FCB5A3900CF8C53 /* nonagonoSierpinski.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = nonagonoSierpinski.cpp; sourceTree = "<group>"; };
 		4448A8241FCA0EB4000E666D /* copoKoch.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = copoKoch.cpp; sourceTree = "<group>"; };
 		4448A8251FCA0EB5000E666D /* trianguloSierpinski.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = trianguloSierpinski.cpp; sourceTree = "<group>"; };
 		4448A8261FCA0EB5000E666D /* alfombraSierpinski.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = alfombraSierpinski.cpp; sourceTree = "<group>"; };
@@ -95,6 +109,13 @@
 				4448A8281FCA0EB5000E666D /* renderer.cpp */,
 				4448A8261FCA0EB5000E666D /* alfombraSierpinski.cpp */,
 				4448A8251FCA0EB5000E666D /* trianguloSierpinski.cpp */,
+				282D62411FCB4C8900CF8C53 /* cuadradoSierpinski.cpp */,
+				282D623E1FCB3BD500CF8C53 /* pentagonoSierpinski.cpp */,
+				282D62441FCB4E3100CF8C53 /* hexagonoSierpinski.cpp */,
+				282D62471FCB500B00CF8C53 /* heptagonoSierpinski.cpp */,
+				282D624A1FCB528600CF8C53 /* octagonoSierpinski.cpp */,
+				282D62501FCB5A3900CF8C53 /* nonagonoSierpinski.cpp */,
+				282D624D1FCB550700CF8C53 /* decagonoSierpinski.cpp */,
 			);
 			path = SFMLFracCompa;
 			sourceTree = "<group>";
@@ -168,11 +189,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				282D624E1FCB550700CF8C53 /* decagonoSierpinski.cpp in Sources */,
 				4448A82D1FCA0EB5000E666D /* renderer.cpp in Sources */,
 				445A2B4B1FC9D660000460F1 /* main.cpp in Sources */,
+				282D62511FCB5A3900CF8C53 /* nonagonoSierpinski.cpp in Sources */,
+				282D624B1FCB528600CF8C53 /* octagonoSierpinski.cpp in Sources */,
+				282D623F1FCB3BD500CF8C53 /* pentagonoSierpinski.cpp in Sources */,
+				282D62421FCB4C8900CF8C53 /* cuadradoSierpinski.cpp in Sources */,
+				282D62451FCB4E3100CF8C53 /* hexagonoSierpinski.cpp in Sources */,
 				4448A82B1FCA0EB5000E666D /* alfombraSierpinski.cpp in Sources */,
 				4448A8291FCA0EB5000E666D /* copoKoch.cpp in Sources */,
 				4448A82A1FCA0EB5000E666D /* trianguloSierpinski.cpp in Sources */,
+				282D62481FCB500B00CF8C53 /* heptagonoSierpinski.cpp in Sources */,
 				44F882AE1FCA1C3000F4F8DB /* Makefile in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -14,7 +14,7 @@ sf::Vector2f CenterPoint(sf::Vector2f& pointA, sf::Vector2f& pointB);
 sf::Vector2f TopPoint(sf::Vector2f& pointA, sf::Vector2f& pointB);
 sf::Vector2f UnitVector(sf::Vector2f&);
 
-class KochSnowflake
+class CopoKoch
 {
 public:
   void setNumberOfIterations(int newNumberOfIterations);
@@ -31,7 +31,7 @@ public:
   void setInverted(bool newInverted);
   bool getInverted() const;
 
-  void drawKochSnowflake(sf::Vector2f pointA, sf::Vector2f pointB,
+  void drawCopoKoch(sf::Vector2f pointA, sf::Vector2f pointB,
       int currentIteration, bool inverted, sf::RenderWindow& window);
   void Render(sf::RenderWindow& window);
 private:
