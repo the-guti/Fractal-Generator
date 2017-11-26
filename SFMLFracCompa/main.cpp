@@ -1,5 +1,6 @@
 //Librerias y Dependencias
 #include <SFML/Graphics.hpp>
+
 #include <iostream>
 #include <chrono>   //Medicion de tiempo
 #include <fstream>  //Crear y escribir en archivos
@@ -135,6 +136,7 @@ void renderingThread(sf::RenderWindow* window){
         window->display();
     }
 }*/
+
 
 
 
