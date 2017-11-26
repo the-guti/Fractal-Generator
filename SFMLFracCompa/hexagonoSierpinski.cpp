@@ -41,6 +41,7 @@ void HexagonoSierpinski::drawHexagonoSierpinski(const sf::Vector2f &reference_po
         sf::Color color = sf::Color(reference_point.y/m_boundingBox.getSize().y*255, 0, window.getSize().x/m_boundingBox.getSize().x*255);
         
         sf::ConvexShape convex;
+        convex.setFillColor(color);
         convex.setPointCount(6);
         convex.setPoint(0,reference_point);
         
@@ -101,6 +102,16 @@ void HexagonoSierpinski::drawHexagonoSierpinski(const sf::Vector2f &reference_po
         //double radius_3 = radius * 0.49;
         
         sf::ConvexShape convex0,convex1, convex2, convex3, convex4, convex5;
+        
+        sf::Color color = sf::Color(reference_point.y/m_boundingBox.getSize().y*255, 0, window.getSize().x/m_boundingBox.getSize().x*255);
+        
+        convex0.setFillColor(color);
+        convex1.setFillColor(color);
+        convex2.setFillColor(color);
+        convex3.setFillColor(color);
+        convex4.setFillColor(color);
+        convex5.setFillColor(color);
+        
         convex0.setPointCount(6);
         convex1.setPointCount(6);
         convex2.setPointCount(6);

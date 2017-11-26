@@ -43,6 +43,7 @@ void NonagonoSierpinski::drawNonagonoSierpinski(const sf::Vector2f &reference_po
         sf::Color color = sf::Color(reference_point.y/m_boundingBox.getSize().y*255, 0, window.getSize().x/m_boundingBox.getSize().x*255);
         
         sf::ConvexShape convex;
+        convex.setFillColor(color);
         convex.setPointCount(9);
         convex.setPoint(0,reference_point);
         
@@ -127,7 +128,20 @@ void NonagonoSierpinski::drawNonagonoSierpinski(const sf::Vector2f &reference_po
         //double radius_3 = radius * (1/3.42);
         double radius_3 = radius * (0.258);
         
-        sf::ConvexShape convex0,convex1, convex2, convex3, convex4, convex5, convex6, convex7, convex8, convex9;
+        sf::ConvexShape convex0,convex1, convex2, convex3, convex4, convex5, convex6, convex7, convex8;
+        
+        sf::Color color = sf::Color(reference_point.y/m_boundingBox.getSize().y*255, 0, window.getSize().x/m_boundingBox.getSize().x*255);
+        
+        convex0.setFillColor(color);
+        convex1.setFillColor(color);
+        convex2.setFillColor(color);
+        convex3.setFillColor(color);
+        convex4.setFillColor(color);
+        convex5.setFillColor(color);
+        convex6.setFillColor(color);
+        convex7.setFillColor(color);
+        convex8.setFillColor(color);
+        
         convex0.setPointCount(9);
         convex1.setPointCount(9);
         convex2.setPointCount(9);
