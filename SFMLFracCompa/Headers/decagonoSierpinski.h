@@ -17,6 +17,7 @@ public:
     DecagonoSierpinski();
     void setNumberOfIterations(int newNumberOfIterations);
     int getNumberOfIterations() const;
+    bool invertido;
     
     
     void setBoundingBox(float x1, float y1, float x2, float y2);

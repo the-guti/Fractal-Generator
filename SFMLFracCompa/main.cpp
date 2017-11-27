@@ -383,6 +383,7 @@ int main(){
                     window.setTitle("Nonagono Sierpinski");
                     tiempoInicio =  std::chrono::high_resolution_clock::now();
                     NonagonoSierpinski s9 = NonagonoSierpinski();
+                    s9.invertido = false;
                     s9.setBoundingBox(0, 0, WIDTH, HEIGHT);
                     s9.setNumberOfIterations(it);
                     s9.setColor(sf::Color::Red);
@@ -401,10 +402,34 @@ int main(){
                     std::cout << "Tiempo de ejecucion: " << time_span.count()  << " milisegundos\n";
                     break;
                 }
+                case 99:{
+                    window.setTitle("Nonagono Sierpinski Invertido");
+                    tiempoInicio =  std::chrono::high_resolution_clock::now();
+                    NonagonoSierpinski s9 = NonagonoSierpinski();
+                    s9.invertido = true;
+                    s9.setBoundingBox(0, 0, WIDTH, HEIGHT);
+                    s9.setNumberOfIterations(it);
+                    s9.setColor(sf::Color::Red);
+                    s9.Render(window);
+                    tiempoFinal =  std::chrono::high_resolution_clock::now();
+                    time_span = std::chrono::duration_cast<std::chrono::duration<double>>((tiempoFinal - tiempoInicio)*1000);
+                    
+                    archivoSalida.open("NonagonoSierpinskiInvEstadisticas.csv",std::ios_base::app);
+                    if (archivoSalida.is_open()){
+                        archivoSalida << it;
+                        archivoSalida << ",";
+                        archivoSalida << time_span.count();
+                        archivoSalida << "\n";
+                        archivoSalida.close();
+                    }
+                    std::cout << "Tiempo de ejecucion: " << time_span.count()  << " milisegundos\n";
+                    break;
+                }
                 case 10:{
                     window.setTitle("Decagono Sierpinski");
                     tiempoInicio =  std::chrono::high_resolution_clock::now();
                     DecagonoSierpinski s10 = DecagonoSierpinski();
+                    s10.invertido = false;
                     s10.setBoundingBox(0, 0, WIDTH, HEIGHT);
                     s10.setNumberOfIterations(it);
                     s10.setColor(sf::Color::Red);
@@ -423,10 +448,33 @@ int main(){
                     std::cout << "Tiempo de ejecucion: " << time_span.count()  << " milisegundos\n";
                     break;
                 }
+                case 1010:{
+                    window.setTitle("Decagono Sierpinski Inv");
+                    tiempoInicio =  std::chrono::high_resolution_clock::now();
+                    DecagonoSierpinski s10 = DecagonoSierpinski();
+                    s10.invertido = true;
+                    s10.setBoundingBox(0, 0, WIDTH, HEIGHT);
+                    s10.setNumberOfIterations(it);
+                    s10.setColor(sf::Color::Red);
+                    s10.Render(window);
+                    tiempoFinal =  std::chrono::high_resolution_clock::now();
+                    time_span = std::chrono::duration_cast<std::chrono::duration<double>>((tiempoFinal - tiempoInicio)*1000);
+                    
+                    archivoSalida.open("DecagonoSierpinskiInvEstadisticas.csv",std::ios_base::app);
+                    if (archivoSalida.is_open()){
+                        archivoSalida << it;
+                        archivoSalida << ",";
+                        archivoSalida << time_span.count();
+                        archivoSalida << "\n";
+                        archivoSalida.close();
+                    }
+                    std::cout << "Tiempo de ejecucion: " << time_span.count()  << " milisegundos\n";
+                    break;
+                }
                 default:
                     printf("Seleccione un fractal aceptado");
                     break;
-            }//END SWITCH
+            }//END SWITCH//
             recalculate = false;
             window.display();
         }//END IF RECALCULATE
