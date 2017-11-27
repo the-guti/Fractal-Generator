@@ -282,6 +282,7 @@ void keyboard(unsigned char key, int x_, int y_){
 }
 
 int main(int argc, char** argv){
+    
     int frac = 3,it = 4,op=3; //Fractal a elegir y num de it a realizar
     std::chrono::high_resolution_clock::time_point tiempoInicio,tiempoFinal;
     std::chrono::duration<double> time_span;
@@ -325,16 +326,18 @@ int main(int argc, char** argv){
             
             //Aqui van inputs
             while (window.pollEvent(event)){
+                std::cout << sf::Keyboard::KeyCount<<std::endl;
+
                 if (event.type == sf::Event::Closed)//Para que la ventana se pueda cerrar en caso de que el usuario haga click en la barra
                     window.close();
                 if (event.type == sf::Event::KeyPressed){
                     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Q) || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)){
                         window.close();
-                    }else if(sf::Keyboard::isKeyPressed(sf::Keyboard::D)){
+                    }else if(sf::Keyboard::isKeyPressed(sf::Keyboard::A)){
                         recalculate = true;
                         it++;
                         printf("%i  ",it);
-                    }else if(sf::Keyboard::isKeyPressed(sf::Keyboard::A)){
+                    }else if(sf::Keyboard::isKeyPressed(sf::Keyboard::S)){
                         recalculate = true;
                         it--;
                         printf("%i  ",it);
