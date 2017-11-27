@@ -312,14 +312,6 @@ int main(int argc, char** argv){
         glutReshapeFunc(reshape);
         glutMainLoop();
     }else{
-        sf::RenderWindow window(sf::VideoMode(WIDTH, HEIGHT), "Juan Ventrana");
-        window.clear();
-        window.setActive(false);
-        
-        sf::RenderWindow window2(sf::VideoMode(WIDTH, HEIGHT), "Maria Ventana");
-        window2.clear();
-        window2.setVisible(false);
-        window2.setActive(false);
         
         printf("\n\n----- Elegir Fractal a mostrar -----\n\n");
         printf("\tAlfombra Sierpinski\t\t -> 0\n \tCopo de Nieve Koch\t\t -> 1\n \tCopo de Nieve Inv\t\t -> 2\n \tTriangulo de Sierpinski\t -> 3\n \tCuadrado de Sierpinski\t -> 4\n \tPentagono Sierpinski\t -> 5\n \tHexagono de Sierpinski\t -> 6\n \tHeptagono de Sierpinski\t -> 7\n \tOctagono de Sierpinski\t -> 8\n \tNonagono de Sierpinski\t -> 9\n \tDecagono de Sierpinski\t -> 10\n");
@@ -328,6 +320,14 @@ int main(int argc, char** argv){
         printf("Favor de introducir numero de iteraciones \n");
         std::cin >> it;
         
+        sf::RenderWindow window(sf::VideoMode(WIDTH, HEIGHT), "Juan Ventrana");
+        window.clear();
+        window.setActive(false);
+        sf::RenderWindow window2(sf::VideoMode(WIDTH, HEIGHT), "Maria Ventana");
+        window2.clear();
+        window2.setVisible(false);
+        window2.setActive(false);
+
         while (window.isOpen()){
             window.clear();//Limpia ventana antes de empezar
             window2.clear();
