@@ -30,8 +30,7 @@ GLfloat c_z = 0.00;
 static int r_x = 0, r_y = 0, r_z = 0;
 long cont = 0;
 
-void init(void)
-{
+void init(void){
     glClearColor (0.0, 0.0, 0.0, 0.0);
     glShadeModel (GL_SMOOTH);
     glEnable(GL_DEPTH_TEST);
@@ -50,7 +49,6 @@ void init(void)
     glLightfv(GL_LIGHT0, GL_POSITION, position);
     glLightModelfv(GL_LIGHT_MODEL_AMBIENT, lmodel_ambient);
     glLightModelfv(GL_LIGHT_MODEL_LOCAL_VIEWER, local_view);
-    
 }
 
 
@@ -68,11 +66,8 @@ void draw_SierpinskiCube(GLdouble centro_x, GLdouble centro_y, GLdouble centro_z
     
     if (iteration_cubo == 0) {
         print_cube(lado_n, centro_x, centro_y, centro_z, nep_dif, nep_emission);
-    }
-    else{
-        
+    }else{
         GLdouble lado = lado_n / 3;
-        
         if (iteration == iteration_cubo - 2) {
             //CUBO POR EL FRENTE
             print_cube(lado, -lado + centro_x, lado + centro_y, lado + centro_z, nep_dif, nep_emission);
@@ -99,8 +94,7 @@ void draw_SierpinskiCube(GLdouble centro_x, GLdouble centro_y, GLdouble centro_z
             print_cube(lado, lado + centro_x, lado + centro_y, -lado + centro_z, nep_dif, nep_emission);
             print_cube(lado, lado + centro_x, 0 + centro_y, -lado + centro_z, nep_dif, nep_emission);
             print_cube(lado, lado + centro_x, -lado + centro_y, -lado + centro_z, nep_dif, nep_emission);
-        }
-        else{
+        }else{
             draw_SierpinskiCube(-lado + centro_x, lado + centro_y, lado + centro_z, lado, nep_dif, nep_emission, iteration+1);
             draw_SierpinskiCube(-lado + centro_x, 0 + centro_y, lado + centro_z, lado, nep_dif, nep_emission, iteration+1);
             draw_SierpinskiCube(-lado + centro_x, -lado + centro_y, lado + centro_z, lado, nep_dif, nep_emission, iteration+1);
@@ -288,10 +282,7 @@ void keyboard(unsigned char key, int x_, int y_){
 }
 
 int main(int argc, char** argv){
-
-    
     int frac = 3,it = 4,op=3; //Fractal a elegir y num de it a realizar
-    
     std::chrono::high_resolution_clock::time_point tiempoInicio,tiempoFinal;
     std::chrono::duration<double> time_span;
     bool recalculate = true;
@@ -312,7 +303,6 @@ int main(int argc, char** argv){
         glutReshapeFunc(reshape);
         glutMainLoop();
     }else{
-        
         printf("\n\n----- Elegir Fractal a mostrar -----\n\n");
         printf("\tAlfombra Sierpinski\t\t -> 0\n \tCopo de Nieve Koch\t\t -> 1\n \tCopo de Nieve Inv\t\t -> 2\n \tTriangulo de Sierpinski\t -> 3\n \tCuadrado de Sierpinski\t -> 4\n \tPentagono Sierpinski\t -> 5\n \tHexagono de Sierpinski\t -> 6\n \tHeptagono de Sierpinski\t -> 7\n \tOctagono de Sierpinski\t -> 8\n \tNonagono de Sierpinski\t -> 9\n \tDecagono de Sierpinski\t -> 10\n");
         std::cin >> frac;
@@ -320,7 +310,7 @@ int main(int argc, char** argv){
         printf("Favor de introducir numero de iteraciones \n");
         std::cin >> it;
         
-        sf::RenderWindow window(sf::VideoMode(WIDTH, HEIGHT), "Juan Ventrana");
+        sf::RenderWindow window(sf::VideoMode(WIDTH, HEIGHT), "Juan Ventana");
         window.clear();
         window.setActive(false);
         sf::RenderWindow window2(sf::VideoMode(WIDTH, HEIGHT), "Maria Ventana");
@@ -354,7 +344,8 @@ int main(int argc, char** argv){
             if(recalculate){
                 window.setActive(false);
                 window2.setActive(true);
-                AlfombraSierpinski as(window2,it,WIDTH, HEIGHT,false,false);
+                TrianguloSierpinski st(window2, it,0,0, WIDTH,HEIGHT, false);//variable bool es de paso a paso
+                window2.setTitle("Triangulo");
                 window2.display();
                 window2.setActive(false);
                 window.setActive(true);
