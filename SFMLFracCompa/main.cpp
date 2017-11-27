@@ -130,7 +130,7 @@ int main(){
                 case 3:{
                     window.setTitle("Triangulo Sierpinski");
                     tiempoInicio =  std::chrono::high_resolution_clock::now();
-                    TrianguloSierpinski st(window, it,0,0, WIDTH,HEIGHT);
+                    TrianguloSierpinski st(window, it,0,0, WIDTH,HEIGHT, true);
                     tiempoFinal =  std::chrono::high_resolution_clock::now();
                     time_span = std::chrono::duration_cast<std::chrono::duration<double>>((tiempoFinal - tiempoInicio)*1000);
                     
