@@ -15,6 +15,7 @@ class PentagonoSierpinski
 {
 public:
     PentagonoSierpinski();
+    bool invertido;
     void setNumberOfIterations(int newNumberOfIterations);
     int getNumberOfIterations() const;
     

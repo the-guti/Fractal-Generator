@@ -75,9 +75,15 @@ void HexagonoSierpinski::drawHexagonoSierpinski(const sf::Vector2f &reference_po
     {
         ang_actual = 90.00 * (M_PI/180);
         double radius_2;
-        radius_2 = radius - (radius/3);
-        //radius_2 = radius - (radius * 0.001);
-        //radius_2 = radius - (radius * 0.01);
+        
+        if(invertido){
+            radius_2 = radius - (radius * 0.001);
+        } else {
+            radius_2 = radius - (radius/3);
+        }
+        
+        
+        
         
         sf::Vector2f center0 = sf::Vector2f(radius_2*cos(ang_actual) + centro.x, - radius_2*sin(ang_actual) + centro.y);
         
@@ -97,9 +103,14 @@ void HexagonoSierpinski::drawHexagonoSierpinski(const sf::Vector2f &reference_po
         sf::Vector2f center5 = sf::Vector2f(radius_2*cos(ang_actual) + centro.x, -(radius_2*sin(ang_actual)) + centro.y);
         
         ang_actual = 90.00 * (M_PI/180);
-        double radius_3 = radius/3;
-        //double radius_3 = radius * 0.499;
-        //double radius_3 = radius * 0.49;
+        double radius_3;
+        
+        if(invertido){
+            radius_3 = radius * 0.499;
+        } else {
+            radius_3 = radius/3;
+        }
+        
         
         sf::ConvexShape convex0,convex1, convex2, convex3, convex4, convex5;
         

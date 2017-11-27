@@ -64,7 +64,7 @@ int main(){
                 case 0:{
                     window.setTitle("Alfombra Sierpinski");
                     tiempoInicio =  std::chrono::high_resolution_clock::now();
-                    AlfombraSierpinski as(window,it,WIDTH, HEIGHT,false);
+                    AlfombraSierpinski as(window,it,WIDTH, HEIGHT,false,false);
                     tiempoFinal =  std::chrono::high_resolution_clock::now();
                     time_span = std::chrono::duration_cast<std::chrono::duration<double>>((tiempoFinal - tiempoInicio)*1000);
                     
@@ -199,6 +199,7 @@ int main(){
                     window.setTitle("Pentagono Sierpinski");
                     tiempoInicio =  std::chrono::high_resolution_clock::now();
                     PentagonoSierpinski s5 = PentagonoSierpinski();
+                    s5.invertido = false;
                     s5.setBoundingBox(0, 0, WIDTH, HEIGHT);
                     s5.setNumberOfIterations(it);
                     s5.setColor(sf::Color::Red);
@@ -217,10 +218,34 @@ int main(){
                     std::cout << "Tiempo de ejecucion: " << time_span.count()  << " milisegundos\n";
                     break;
                 }
+                case 55:{
+                    window.setTitle("Pentagono Sierpinski Invertido");
+                    tiempoInicio =  std::chrono::high_resolution_clock::now();
+                    PentagonoSierpinski s5 = PentagonoSierpinski();
+                    s5.invertido = true;
+                    s5.setBoundingBox(0, 0, WIDTH, HEIGHT);
+                    s5.setNumberOfIterations(it);
+                    s5.setColor(sf::Color::Red);
+                    s5.Render(window);
+                    tiempoFinal =  std::chrono::high_resolution_clock::now();
+                    time_span = std::chrono::duration_cast<std::chrono::duration<double>>((tiempoFinal - tiempoInicio)*1000);
+                    
+                    archivoSalida.open("PentagonoSierpinskiInvEstadisticas.csv",std::ios_base::app);
+                    if (archivoSalida.is_open()){
+                        archivoSalida << it;
+                        archivoSalida << ",";
+                        archivoSalida << time_span.count();
+                        archivoSalida << "\n";
+                        archivoSalida.close();
+                    }
+                    std::cout << "Tiempo de ejecucion: " << time_span.count()  << " milisegundos\n";
+                    break;
+                }
                 case 6:{
                     window.setTitle("Hexagono Sierpinski");
                     tiempoInicio =  std::chrono::high_resolution_clock::now();
                     HexagonoSierpinski s6 = HexagonoSierpinski();
+                    s6.invertido = false;
                     s6.setBoundingBox(0, 0, WIDTH, HEIGHT);
                     s6.setNumberOfIterations(it);
                     s6.setColor(sf::Color::Red);
@@ -229,6 +254,29 @@ int main(){
                     time_span = std::chrono::duration_cast<std::chrono::duration<double>>((tiempoFinal - tiempoInicio)*1000);
                     
                     archivoSalida.open("HexagonoSierpinskiEstadisticas.csv",std::ios_base::app);
+                    if (archivoSalida.is_open()){
+                        archivoSalida << it;
+                        archivoSalida << ",";
+                        archivoSalida << time_span.count();
+                        archivoSalida << "\n";
+                        archivoSalida.close();
+                    }
+                    std::cout << "Tiempo de ejecucion: " << time_span.count()  << " milisegundos\n";
+                    break;
+                }
+                case 66:{
+                    window.setTitle("Hexagono Sierpinski Invertido");
+                    tiempoInicio =  std::chrono::high_resolution_clock::now();
+                    HexagonoSierpinski s6 = HexagonoSierpinski();
+                    s6.invertido = true;
+                    s6.setBoundingBox(0, 0, WIDTH, HEIGHT);
+                    s6.setNumberOfIterations(it);
+                    s6.setColor(sf::Color::Red);
+                    s6.Render(window);
+                    tiempoFinal =  std::chrono::high_resolution_clock::now();
+                    time_span = std::chrono::duration_cast<std::chrono::duration<double>>((tiempoFinal - tiempoInicio)*1000);
+                    
+                    archivoSalida.open("HexagonoSierpinskiInvEstadisticas.csv",std::ios_base::app);
                     if (archivoSalida.is_open()){
                         archivoSalida << it;
                         archivoSalida << ",";

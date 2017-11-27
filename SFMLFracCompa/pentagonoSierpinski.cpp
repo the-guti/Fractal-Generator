@@ -78,8 +78,14 @@ void PentagonoSierpinski::drawPentagonoSierpinski(const sf::Vector2f &reference_
         /******************** AQUÍ ESTA UNO DE LOS RADIOS QUE SE DESCOMENTAN ****************/
         /*****    PERO MÁS ABAJO HAY OTRO RADIO  *****/
         
-        //radius_2 = radius - (radius * ((3-sqrt(5))/2));  //CRECIMIENTO NORMAL
-        radius_2 = radius - (radius * (0.0001));       //CRECIMIENTO LOCO
+        if(invertido){
+            radius_2 = radius - (radius * (0.0001));
+        } else {
+            radius_2 = radius - (radius * ((3-sqrt(5))/2));
+        }
+        
+        
+        
         
         sf::Vector2f center0 = sf::Vector2f(centro.x + radius_2*cos(ang_actual), centro.y - radius_2*sin(ang_actual));
         
@@ -98,10 +104,14 @@ void PentagonoSierpinski::drawPentagonoSierpinski(const sf::Vector2f &reference_
         ang_actual = 90.00 * (M_PI/180);
         
         
+        double radius_3;
         
-        /****************       SEGUNDO RADIO QUE SE DESCOMENTA     *********************/
-        //double radius_3 = radius * ((3-sqrt(5))/2); //RADIO PARA CRECIMIENTO NORMAL
-        double radius_3 = radius * (0.4999); //RADIO PARA CRECIMIENTO LOCO
+        if(invertido){
+            radius_3 = radius * (0.4999);
+        } else {
+            radius_3 = radius * ((3-sqrt(5))/2);
+        }
+        
         
         sf::ConvexShape convex0,convex1, convex2, convex3, convex4;
         

@@ -15,6 +15,7 @@ class HexagonoSierpinski
 {
 public:
     HexagonoSierpinski();
+    bool invertido;
     void setNumberOfIterations(int newNumberOfIterations);
     int getNumberOfIterations() const;
     
