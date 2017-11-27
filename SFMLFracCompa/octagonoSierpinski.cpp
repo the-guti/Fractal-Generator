@@ -85,8 +85,15 @@ void OctagonoSierpinski::drawOctagonoSierpinski(const sf::Vector2f &reference_po
     {
         ang_actual = 90.00 * (M_PI/180);
         double radius_2;
-        //radius_2 = radius - (radius * (0.01));
-        radius_2 = radius - (radius * (1/3.42));
+        
+        if(invertido) {
+            radius_2 = radius - (radius * (0.01));
+        } else {
+            radius_2 = radius - (radius * (1/3.42));
+        }
+        
+        
+        
         sf::Vector2f center0 = sf::Vector2f(radius_2*cos(ang_actual) + centro.x, - radius_2*sin(ang_actual) + centro.y);
         
         ang_actual += incremento_ang;
@@ -111,8 +118,16 @@ void OctagonoSierpinski::drawOctagonoSierpinski(const sf::Vector2f &reference_po
         sf::Vector2f center7 = sf::Vector2f(radius_2*cos(ang_actual) + centro.x, -(radius_2*sin(ang_actual)) + centro.y);
         
         ang_actual = 90.00 * (M_PI/180);
-        //double radius_3 = radius * (0.49);
-        double radius_3 = radius * (1/3.42);
+        
+        double radius_3;
+        
+        if(invertido){
+            radius_3 = radius * (0.49);
+        } else {
+           radius_3 = radius * (1/3.42);
+        }
+        
+        
         
         sf::ConvexShape convex0,convex1, convex2, convex3, convex4, convex5, convex6, convex7;
         

@@ -337,6 +337,7 @@ int main(){
                     window.setTitle("Octagono Sierpinski");
                     tiempoInicio =  std::chrono::high_resolution_clock::now();
                     OctagonoSierpinski s8 = OctagonoSierpinski();
+                    s8.invertido = false;
                     s8.setBoundingBox(0, 0, WIDTH, HEIGHT);
                     s8.setNumberOfIterations(it);
                     s8.setColor(sf::Color::Red);
@@ -345,6 +346,29 @@ int main(){
                     time_span = std::chrono::duration_cast<std::chrono::duration<double>>((tiempoFinal - tiempoInicio)*1000);
                     
                     archivoSalida.open("OctagonoSierpinskiEstadisticas.csv",std::ios_base::app);
+                    if (archivoSalida.is_open()){
+                        archivoSalida << it;
+                        archivoSalida << ",";
+                        archivoSalida << time_span.count();
+                        archivoSalida << "\n";
+                        archivoSalida.close();
+                    }
+                    std::cout << "Tiempo de ejecucion: " << time_span.count()  << " milisegundos\n";
+                    break;
+                }
+                case 88:{
+                    window.setTitle("Octagono Sierpinski Invertido");
+                    tiempoInicio =  std::chrono::high_resolution_clock::now();
+                    OctagonoSierpinski s8 = OctagonoSierpinski();
+                    s8.invertido = true;
+                    s8.setBoundingBox(0, 0, WIDTH, HEIGHT);
+                    s8.setNumberOfIterations(it);
+                    s8.setColor(sf::Color::Red);
+                    s8.Render(window);
+                    tiempoFinal =  std::chrono::high_resolution_clock::now();
+                    time_span = std::chrono::duration_cast<std::chrono::duration<double>>((tiempoFinal - tiempoInicio)*1000);
+                    
+                    archivoSalida.open("OctagonoSierpinskiInvEstadisticas.csv",std::ios_base::app);
                     if (archivoSalida.is_open()){
                         archivoSalida << it;
                         archivoSalida << ",";
