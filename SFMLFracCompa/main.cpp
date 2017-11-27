@@ -3,7 +3,7 @@
 #include <iostream>
 #include <chrono>   //Medicion de tiempo
 #include <fstream>  //Crear y escribir en archivos
-//#include <GLUT/glut.h>
+#include <GLUT/glut.h>
 //Headers
 #include "Headers/renderer.h"
 #include "Headers/alfombraSierpinski.h"
@@ -20,62 +20,319 @@
 #define WIDTH 720
 #define HEIGHT 720
 
-void renderingThread(sf::RenderWindow* window2){
-    int it = 3;
-    // activate the window's context
-    window2->setActive(true);
-    // the rendering loop
-    //while (window2->isOpen()){
-        // draw...
-        CopoKoch ck = CopoKoch();
-        ck.setBoundingBox(0, 0, WIDTH, HEIGHT);
-        ck.setNumberOfIterations(it);
-        ck.setColor(sf::Color::Red);
-        ck.setInverted(false);
-        ck.Render(*window2);
-        // end the current frame -- this is a rendering function (it requires the context to be active)
-        window2->display();
-    sf::sleep(sf::milliseconds(20));
-    //}
+GLdouble size_cube;
+GLint iteration_cubo = 0;
+GLfloat c_x = 0.00;
+GLfloat c_y = 0.00;
+GLfloat c_z = 0.00;
+
+
+static int r_x = 0, r_y = 0, r_z = 0;
+long cont = 0;
+
+void init(void)
+{
+    glClearColor (0.0, 0.0, 0.0, 0.0);
+    glShadeModel (GL_SMOOTH);
+    glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_LESS);
+    glEnable(GL_LIGHTING);
+    glEnable(GL_LIGHT0);
+    
+    GLfloat ambient[] = { 0.0, 0.0, 0.0, 1.0 };
+    GLfloat diffuse[] = { 1.0, 1.0, 1.0, 1.0 };
+    GLfloat position[] = { 2.0, 2.0, 3.0, 0.0 };
+    GLfloat lmodel_ambient[] = { 0.4, 0.4, 0.4, 1.0 };
+    GLfloat local_view[] = { 0.0 };
+    
+    glLightfv(GL_LIGHT0, GL_AMBIENT, ambient);
+    glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuse);
+    glLightfv(GL_LIGHT0, GL_POSITION, position);
+    glLightModelfv(GL_LIGHT_MODEL_AMBIENT, lmodel_ambient);
+    glLightModelfv(GL_LIGHT_MODEL_LOCAL_VIEWER, local_view);
+    
 }
 
-int main(){
-    sf::RenderWindow window(sf::VideoMode(WIDTH, HEIGHT), "Juan Ventrana");
-    window.setActive(false);
-    window.setVisible(false);
 
-    sf::RenderWindow window2(sf::VideoMode(WIDTH, HEIGHT), "Maria Ventana");
-    window2.setActive(true);
-    window2.clear();
-    sf::Thread thread(&renderingThread, &window2);
-    thread.launch();
-    window2.setVisible(false);
-    int frac = 3,it = 4; //Fractal a elegir y num de it a realizar
+void print_cube(GLdouble size, GLdouble cx, GLdouble cy, GLdouble cz, GLfloat nep_dif[],GLfloat nep_emission[]){
+    glPushMatrix();
+    glTranslatef(cx, cy, cz);
+    glMaterialfv(GL_FRONT, GL_AMBIENT, nep_dif);
+    glMaterialfv(GL_FRONT, GL_EMISSION, nep_emission);
+    glutSolidCube(size);
+    glPopMatrix();
+}
+
+
+void draw_SierpinskiCube(GLdouble centro_x, GLdouble centro_y, GLdouble centro_z, GLdouble lado_n,GLfloat nep_dif[],GLfloat nep_emission[],GLint iteration){
+    
+    if (iteration_cubo == 0) {
+        print_cube(lado_n, centro_x, centro_y, centro_z, nep_dif, nep_emission);
+    }
+    else{
+        
+        GLdouble lado = lado_n / 3;
+        
+        if (iteration == iteration_cubo - 2) {
+            //CUBO POR EL FRENTE
+            print_cube(lado, -lado + centro_x, lado + centro_y, lado + centro_z, nep_dif, nep_emission);
+            print_cube(lado, -lado + centro_x, 0 + centro_y, lado + centro_z, nep_dif, nep_emission);
+            print_cube(lado, -lado + centro_x, -lado + centro_y, lado + centro_z, nep_dif, nep_emission);
+            print_cube(lado, 0 + centro_x, lado + centro_y, lado + centro_z, nep_dif, nep_emission);
+            print_cube(lado, 0 + centro_x, -lado + centro_y, lado + centro_z, nep_dif, nep_emission);
+            print_cube(lado, lado + centro_x, lado + centro_y, lado + centro_z, nep_dif, nep_emission);
+            print_cube(lado, lado + centro_x, 0 + centro_y, lado + centro_z, nep_dif, nep_emission);
+            print_cube(lado, lado + centro_x, -lado + centro_y, lado + centro_z, nep_dif, nep_emission);
+            
+            //CUBO EN MEDIO
+            print_cube(lado, -lado + centro_x, lado + centro_y,0 + centro_z, nep_dif, nep_emission);
+            print_cube(lado, -lado + centro_x, -lado + centro_y, 0 + centro_z, nep_dif, nep_emission);
+            print_cube(lado, lado + centro_x, lado + centro_y, 0 + centro_z, nep_dif, nep_emission);
+            print_cube(lado, lado + centro_x, -lado + centro_y, 0 + centro_z, nep_dif, nep_emission);
+            
+            //CUBO POR ATRÁS
+            print_cube(lado, -lado + centro_x, lado + centro_y, -lado + centro_z, nep_dif, nep_emission);
+            print_cube(lado, -lado + centro_x, 0 + centro_y, -lado + centro_z, nep_dif, nep_emission);
+            print_cube(lado, -lado + centro_x, -lado + centro_y, -lado + centro_z, nep_dif, nep_emission);
+            print_cube(lado, 0 + centro_x, lado + centro_y, -lado + centro_z, nep_dif, nep_emission);
+            print_cube(lado, 0 + centro_x, -lado + centro_y, -lado + centro_z, nep_dif, nep_emission);
+            print_cube(lado, lado + centro_x, lado + centro_y, -lado + centro_z, nep_dif, nep_emission);
+            print_cube(lado, lado + centro_x, 0 + centro_y, -lado + centro_z, nep_dif, nep_emission);
+            print_cube(lado, lado + centro_x, -lado + centro_y, -lado + centro_z, nep_dif, nep_emission);
+        }
+        else{
+            draw_SierpinskiCube(-lado + centro_x, lado + centro_y, lado + centro_z, lado, nep_dif, nep_emission, iteration+1);
+            draw_SierpinskiCube(-lado + centro_x, 0 + centro_y, lado + centro_z, lado, nep_dif, nep_emission, iteration+1);
+            draw_SierpinskiCube(-lado + centro_x, -lado + centro_y, lado + centro_z, lado, nep_dif, nep_emission, iteration+1);
+            draw_SierpinskiCube(0 + centro_x, lado + centro_y, lado + centro_z, lado, nep_dif, nep_emission, iteration+1);
+            draw_SierpinskiCube(0 + centro_x, -lado + centro_y, lado + centro_z, lado, nep_dif, nep_emission, iteration+1);
+            draw_SierpinskiCube(lado + centro_x, lado + centro_y, lado + centro_z, lado, nep_dif, nep_emission, iteration+1);
+            draw_SierpinskiCube(lado + centro_x, 0 + centro_y, lado + centro_z, lado, nep_dif, nep_emission, iteration+1);
+            draw_SierpinskiCube(lado + centro_x, -lado + centro_y, lado + centro_z, lado, nep_dif, nep_emission, iteration+1);
+            
+            draw_SierpinskiCube(-lado + centro_x, lado + centro_y,0 + centro_z, lado, nep_dif, nep_emission, iteration+1);
+            draw_SierpinskiCube(-lado + centro_x, -lado + centro_y, 0 + centro_z, lado, nep_dif, nep_emission, iteration+1);
+            draw_SierpinskiCube(lado + centro_x, lado + centro_y, 0 + centro_z, lado, nep_dif, nep_emission, iteration+1);
+            draw_SierpinskiCube(lado + centro_x, -lado + centro_y, 0 + centro_z, lado, nep_dif, nep_emission, iteration+1);
+            
+            draw_SierpinskiCube(-lado + centro_x, lado + centro_y, -lado + centro_z, lado, nep_dif, nep_emission, iteration+1);
+            draw_SierpinskiCube(-lado + centro_x, 0 + centro_y, -lado + centro_z, lado, nep_dif, nep_emission, iteration+1);
+            draw_SierpinskiCube(-lado + centro_x, -lado + centro_y, -lado + centro_z, lado, nep_dif, nep_emission, iteration+1);
+            draw_SierpinskiCube(0 + centro_x, lado + centro_y, -lado + centro_z, lado, nep_dif, nep_emission, iteration+1);
+            draw_SierpinskiCube(0 + centro_x, -lado + centro_y, -lado + centro_z, lado, nep_dif, nep_emission, iteration+1);
+            draw_SierpinskiCube(lado + centro_x, lado + centro_y, -lado + centro_z, lado, nep_dif, nep_emission, iteration+1);
+            draw_SierpinskiCube(lado + centro_x, 0 + centro_y, -lado + centro_z, lado, nep_dif, nep_emission, iteration+1);
+            draw_SierpinskiCube(lado + centro_x, -lado + centro_y, -lado + centro_z, lado, nep_dif, nep_emission, iteration+1);
+        }
+    }
+    
+}
+
+void display(void)
+{
+    //Material cubo
+    GLfloat nep_dif[] = { 0.32, 0.8, 0.87, 1.0 };
+    GLfloat nep_emission[] = {0.0, 0.0, 0.54, 1.0};
+    
+    glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    
+    glRotatef ((GLfloat) r_x, 1.0, 0.0, 0.0);
+    glRotatef ((GLfloat) r_y, 0.0, 1.0, 0.0);
+    glRotatef ((GLfloat) r_z, 0.0, 0.0, 1.0);
+    
+   /*q if (!size_cube) {
+        std::cout << "Tamaño del cubo: "; std::cin >> size_cube;
+    }*/
+    GLdouble cx = c_x, cy = c_y, cz = c_z, lado = 6;
+
+    //GLdouble cx = c_x, cy = c_y, cz = c_z, lado = size_cube;
+    
+    draw_SierpinskiCube(cx, cy, cz, lado, nep_dif, nep_emission, -1);
+    
+    glutSwapBuffers();
+}
+
+void reshape (int w, int h)
+{
+    glViewport (0, 0, (GLsizei) w, (GLsizei) h);
+    glMatrixMode (GL_PROJECTION);
+    glLoadIdentity ();
+    gluPerspective(60.0, (GLfloat) w/(GLfloat) h, 1.0, 40.0);
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+    gluLookAt(0.0, 0.0, 10.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
+}
+
+
+void keyboard(unsigned char key, int x_, int y_){
+    switch (key) {
+        case 'q':
+            exit(0);
+            break;
+            
+        case '+':
+            r_x = 0;
+            r_y = 0;
+            r_z = 0;
+            iteration_cubo += 1;
+            glutPostRedisplay();
+            break;
+            
+        case '-':
+            r_x = 0;
+            r_y = 0;
+            r_z = 0;
+            iteration_cubo -= 1;
+            glutPostRedisplay();
+            break;
+            
+        case 'X':
+            r_x = 0;
+            r_y = 0;
+            r_z = 0;
+            r_x = (r_x + 10) % 360;
+            glutPostRedisplay();
+            break;
+            
+        case 'x':
+            r_x = 0;
+            r_y = 0;
+            r_z = 0;
+            r_x = (r_x - 10) % 360;
+            glutPostRedisplay();
+            break;
+            
+        case 'Y':
+            r_x = 0;
+            r_y = 0;
+            r_z = 0;
+            r_y = (r_y + 10) % 360;
+            glutPostRedisplay();
+            break;
+            
+        case 'y':
+            r_x = 0;
+            r_y = 0;
+            r_z = 0;
+            r_y = (r_y - 10) % 360;
+            glutPostRedisplay();
+            break;
+            
+        case 'Z':
+            r_x = 0;
+            r_y = 0;
+            r_z = 0;
+            r_z = (r_z + 10) % 360;
+            glutPostRedisplay();
+            break;
+            
+        case 'z':
+            r_x = 0;
+            r_y = 0;
+            r_z = 0;
+            r_z = (r_z - 10) % 360;
+            glutPostRedisplay();
+            break;
+            
+        case 'w':
+            r_x = 0;
+            r_y = 0;
+            r_z = 0;
+            c_y += 0.05;
+            glutPostRedisplay();
+            break;
+            
+        case 's':
+            r_x = 0;
+            r_y = 0;
+            r_z = 0;
+            c_y -= 0.15;
+            glutPostRedisplay();
+            break;
+            
+        case 'a':
+            r_x = 0;
+            r_y = 0;
+            r_z = 0;
+            c_x -= 0.15;
+            glutPostRedisplay();
+            break;
+            
+        case 'd':
+            r_x = 0;
+            r_y = 0;
+            r_z = 0;
+            c_x += 0.15;
+            glutPostRedisplay();
+            break;
+            
+        case 'f':
+            r_x = 0;
+            r_y = 0;
+            r_z = 0;
+            c_z += 0.15;
+            glutPostRedisplay();
+            break;
+            
+        case 'b':
+            r_x = 0;
+            r_y = 0;
+            r_z = 0;
+            c_z -= 0.15;
+            glutPostRedisplay();
+            break;
+            
+        default:
+            break;
+    }
+}
+
+int main(int argc, char** argv){
+
+    
+    int frac = 3,it = 4,op=3; //Fractal a elegir y num de it a realizar
     
     std::chrono::high_resolution_clock::time_point tiempoInicio,tiempoFinal;
     std::chrono::duration<double> time_span;
     bool recalculate = true;
     std::ofstream archivoSalida;
     
-    //printf("----- Elegir Dimension -----\n\n");
-    //printf("\t2D\t\t -> 2\n \t3D\t\t -> 3\n");
-    //std::cin >> it;
-    //if(it==3){
+    printf("----- Elegir Dimension -----\n\n");
+    printf("\t2D\t\t -> 2\n \t3D\t\t -> 3\n");
+    std::cin >> op;
+    if(op==3){
+        glutInit(&argc, argv);
+        glutInitDisplayMode (GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
+        glutInitWindowSize (1000, 1000);
+        glutInitWindowPosition (10, 10);
+        glutCreateWindow (argv[0]);
+        init();
+        glutKeyboardFunc(keyboard);
+        glutDisplayFunc(display);
+        glutReshapeFunc(reshape);
+        glutMainLoop();
+    }else{
+        sf::RenderWindow window(sf::VideoMode(WIDTH, HEIGHT), "Juan Ventrana");
+        window.clear();
+        window.setActive(false);
         
-    //}else{
-            //std::cin >> it;    }else{
-        printf("----- Elegir Fractal a mostrar -----\n\n");
+        sf::RenderWindow window2(sf::VideoMode(WIDTH, HEIGHT), "Maria Ventana");
+        window2.clear();
+        window2.setVisible(false);
+        window2.setActive(false);
+        
+        printf("\n\n----- Elegir Fractal a mostrar -----\n\n");
         printf("\tAlfombra Sierpinski\t\t -> 0\n \tCopo de Nieve Koch\t\t -> 1\n \tCopo de Nieve Inv\t\t -> 2\n \tTriangulo de Sierpinski\t -> 3\n \tCuadrado de Sierpinski\t -> 4\n \tPentagono Sierpinski\t -> 5\n \tHexagono de Sierpinski\t -> 6\n \tHeptagono de Sierpinski\t -> 7\n \tOctagono de Sierpinski\t -> 8\n \tNonagono de Sierpinski\t -> 9\n \tDecagono de Sierpinski\t -> 10\n");
-        //std::cin >> frac;
+        std::cin >> frac;
         
         printf("Favor de introducir numero de iteraciones \n");
-        //std::cin >> it;
+        std::cin >> it;
         
         while (window.isOpen()){
-            window.setVisible(true);
             window.clear();//Limpia ventana antes de empezar
+            window2.clear();
             sf::Event event;
-
+            
             //Aqui van inputs
             while (window.pollEvent(event)){
                 if (event.type == sf::Event::Closed)//Para que la ventana se pueda cerrar en caso de que el usuario haga click en la barra
@@ -95,6 +352,12 @@ int main(){
                 }
             }
             if(recalculate){
+                window.setActive(false);
+                window2.setActive(true);
+                AlfombraSierpinski as(window2,it,WIDTH, HEIGHT,false,false);
+                window2.display();
+                window2.setActive(false);
+                window.setActive(true);
                 switch (frac) {
                     case 0:{
                         window.setTitle("Alfombra Sierpinski");
@@ -515,6 +778,11 @@ int main(){
             }//END IF RECALCULATE
             
         }//END WHILE
-    //}//END IF 2D 3D
+    }//END IF 2D 3D
     return 0;
 }
+
+
+
+
+
