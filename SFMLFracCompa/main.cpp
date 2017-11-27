@@ -291,6 +291,7 @@ int main(){
                     window.setTitle("Heptagono Sierpinski");
                     tiempoInicio =  std::chrono::high_resolution_clock::now();
                     HeptagonoSierpinski s7 = HeptagonoSierpinski();
+                    s7.invertido = false;
                     s7.setBoundingBox(0, 0, WIDTH, HEIGHT);
                     s7.setNumberOfIterations(it);
                     s7.setColor(sf::Color::Red);
@@ -299,6 +300,29 @@ int main(){
                     time_span = std::chrono::duration_cast<std::chrono::duration<double>>((tiempoFinal - tiempoInicio)*1000);
                     
                     archivoSalida.open("HeptagonoSierpinskiEstadisticas.csv",std::ios_base::app);
+                    if (archivoSalida.is_open()){
+                        archivoSalida << it;
+                        archivoSalida << ",";
+                        archivoSalida << time_span.count();
+                        archivoSalida << "\n";
+                        archivoSalida.close();
+                    }
+                    std::cout << "Tiempo de ejecucion: " << time_span.count()  << " milisegundos\n";
+                    break;
+                }
+                case 77:{
+                    window.setTitle("Heptagono Sierpinski Inverso");
+                    tiempoInicio =  std::chrono::high_resolution_clock::now();
+                    HeptagonoSierpinski s7 = HeptagonoSierpinski();
+                    s7.invertido = true;
+                    s7.setBoundingBox(0, 0, WIDTH, HEIGHT);
+                    s7.setNumberOfIterations(it);
+                    s7.setColor(sf::Color::Red);
+                    s7.Render(window);
+                    tiempoFinal =  std::chrono::high_resolution_clock::now();
+                    time_span = std::chrono::duration_cast<std::chrono::duration<double>>((tiempoFinal - tiempoInicio)*1000);
+                    
+                    archivoSalida.open("HeptagonoSierpinskiInvEstadisticas.csv",std::ios_base::app);
                     if (archivoSalida.is_open()){
                         archivoSalida << it;
                         archivoSalida << ",";
