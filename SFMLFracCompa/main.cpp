@@ -228,7 +228,7 @@ void keyboard(unsigned char key, int x_, int y_){
             glutPostRedisplay();
             break;
             
-        case 'w':
+        case 's':
             r_x = 0;
             r_y = 0;
             r_z = 0;
@@ -236,7 +236,7 @@ void keyboard(unsigned char key, int x_, int y_){
             glutPostRedisplay();
             break;
             
-        case 's':
+        case 'w':
             r_x = 0;
             r_y = 0;
             r_z = 0;
@@ -244,7 +244,7 @@ void keyboard(unsigned char key, int x_, int y_){
             glutPostRedisplay();
             break;
             
-        case 'a':
+        case 'd':
             r_x = 0;
             r_y = 0;
             r_z = 0;
@@ -252,7 +252,7 @@ void keyboard(unsigned char key, int x_, int y_){
             glutPostRedisplay();
             break;
             
-        case 'd':
+        case 'a':
             r_x = 0;
             r_y = 0;
             r_z = 0;
