@@ -20,14 +20,36 @@
 #define WIDTH 720
 #define HEIGHT 720
 
+void renderingThread(sf::RenderWindow* window2){
+    int it = 3;
+    // activate the window's context
+    window2->setActive(true);
+    // the rendering loop
+    //while (window2->isOpen()){
+        // draw...
+        CopoKoch ck = CopoKoch();
+        ck.setBoundingBox(0, 0, WIDTH, HEIGHT);
+        ck.setNumberOfIterations(it);
+        ck.setColor(sf::Color::Red);
+        ck.setInverted(false);
+        ck.Render(*window2);
+        // end the current frame -- this is a rendering function (it requires the context to be active)
+        window2->display();
+    sf::sleep(sf::milliseconds(20));
+    //}
+}
+
 int main(){
     sf::RenderWindow window(sf::VideoMode(WIDTH, HEIGHT), "Juan Ventrana");
-    window.setActive(true);
+    window.setActive(false);
+    window.setVisible(false);
 
     sf::RenderWindow window2(sf::VideoMode(WIDTH, HEIGHT), "Maria Ventana");
+    window2.setActive(true);
+    window2.clear();
+    sf::Thread thread(&renderingThread, &window2);
+    thread.launch();
     window2.setVisible(false);
-    window2.setActive(false);
-    
     int frac = 3,it = 4; //Fractal a elegir y num de it a realizar
     
     std::chrono::high_resolution_clock::time_point tiempoInicio,tiempoFinal;
@@ -35,12 +57,12 @@ int main(){
     bool recalculate = true;
     std::ofstream archivoSalida;
     
-    printf("----- Elegir Dimension -----\n\n");
-    printf("\t2D\t\t -> 2\n \t3D\t\t -> 3\n");
+    //printf("----- Elegir Dimension -----\n\n");
+    //printf("\t2D\t\t -> 2\n \t3D\t\t -> 3\n");
     //std::cin >> it;
-    if(it==3){
+    //if(it==3){
         
-    }else{
+    //}else{
             //std::cin >> it;    }else{
         printf("----- Elegir Fractal a mostrar -----\n\n");
         printf("\tAlfombra Sierpinski\t\t -> 0\n \tCopo de Nieve Koch\t\t -> 1\n \tCopo de Nieve Inv\t\t -> 2\n \tTriangulo de Sierpinski\t -> 3\n \tCuadrado de Sierpinski\t -> 4\n \tPentagono Sierpinski\t -> 5\n \tHexagono de Sierpinski\t -> 6\n \tHeptagono de Sierpinski\t -> 7\n \tOctagono de Sierpinski\t -> 8\n \tNonagono de Sierpinski\t -> 9\n \tDecagono de Sierpinski\t -> 10\n");
@@ -50,8 +72,8 @@ int main(){
         //std::cin >> it;
         
         while (window.isOpen()){
+            window.setVisible(true);
             window.clear();//Limpia ventana antes de empezar
-            window2.clear();
             sf::Event event;
 
             //Aqui van inputs
@@ -73,12 +95,6 @@ int main(){
                 }
             }
             if(recalculate){
-                window.setActive(false);
-                window2.setActive(true);
-                AlfombraSierpinski as(window2,it,WIDTH, HEIGHT,false,false);
-                window2.display();
-                window2.setActive(false);
-                window.setActive(true);
                 switch (frac) {
                     case 0:{
                         window.setTitle("Alfombra Sierpinski");
@@ -499,10 +515,6 @@ int main(){
             }//END IF RECALCULATE
             
         }//END WHILE
-    }//END IF 2D 3D
+    //}//END IF 2D 3D
     return 0;
 }
-
-
-
-
