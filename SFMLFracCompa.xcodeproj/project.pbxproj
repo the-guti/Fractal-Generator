@@ -25,6 +25,8 @@
 		445A2B601FC9D6E1000460F1 /* libsfml-audio.2.4.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 445A2B5B1FC9D6E1000460F1 /* libsfml-audio.2.4.2.dylib */; };
 		445A2B611FC9D6E1000460F1 /* libsfml-graphics.2.4.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 445A2B5C1FC9D6E1000460F1 /* libsfml-graphics.2.4.2.dylib */; };
 		44F882AE1FCA1C3000F4F8DB /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 44F882AD1FCA1C3000F4F8DB /* Makefile */; };
+		44F882B01FCBC17E00F4F8DB /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44F882AF1FCBC17E00F4F8DB /* GLUT.framework */; };
+		44F882B21FCBC19000F4F8DB /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44F882B11FCBC19000F4F8DB /* OpenGL.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -62,6 +64,8 @@
 		445A2B5C1FC9D6E1000460F1 /* libsfml-graphics.2.4.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libsfml-graphics.2.4.2.dylib"; path = "ExternalLibraries/SFML/lib/libsfml-graphics.2.4.2.dylib"; sourceTree = "<group>"; };
 		445A2B621FC9E9F2000460F1 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
 		44F882AD1FCA1C3000F4F8DB /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		44F882AF1FCBC17E00F4F8DB /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
+		44F882B11FCBC19000F4F8DB /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +73,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44F882B21FCBC19000F4F8DB /* OpenGL.framework in Frameworks */,
+				44F882B01FCBC17E00F4F8DB /* GLUT.framework in Frameworks */,
 				445A2B5D1FC9D6E1000460F1 /* libsfml-system.2.4.2.dylib in Frameworks */,
 				445A2B5E1FC9D6E1000460F1 /* libsfml-window.2.4.2.dylib in Frameworks */,
 				445A2B5F1FC9D6E1000460F1 /* libsfml-network.2.4.2.dylib in Frameworks */,
@@ -123,6 +129,8 @@
 		445A2B571FC9D6E1000460F1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				44F882B11FCBC19000F4F8DB /* OpenGL.framework */,
+				44F882AF1FCBC17E00F4F8DB /* GLUT.framework */,
 				445A2B5B1FC9D6E1000460F1 /* libsfml-audio.2.4.2.dylib */,
 				445A2B5C1FC9D6E1000460F1 /* libsfml-graphics.2.4.2.dylib */,
 				445A2B5A1FC9D6E1000460F1 /* libsfml-network.2.4.2.dylib */,
