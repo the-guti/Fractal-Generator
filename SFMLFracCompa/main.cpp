@@ -356,7 +356,7 @@ int main(int argc, char** argv){
                     case 0:{
                         window.setTitle("Alfombra Sierpinski");
                         tiempoInicio =  std::chrono::high_resolution_clock::now();
-                        AlfombraSierpinski as(window,it,WIDTH, HEIGHT,false,false);
+                        AlfombraSierpinski as(window,it,WIDTH, HEIGHT,true,false);
                         tiempoFinal =  std::chrono::high_resolution_clock::now();
                         time_span = std::chrono::duration_cast<std::chrono::duration<double>>((tiempoFinal - tiempoInicio)*1000);
                         

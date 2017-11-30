@@ -1,5 +1,4 @@
 #include "Headers/alfombraSierpinski.h"
-
 //Constructor
 AlfombraSierpinski::AlfombraSierpinski(sf::RenderWindow& window, int it, int x, int y, bool slow, bool inv){
     numIt = it; //Se asignan numero de iteraciones a realizar a la clase
