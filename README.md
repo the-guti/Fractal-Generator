@@ -11,7 +11,8 @@
     <a href="https://github.com/the-guti/Fractal-Generator/issues">Report Bug or Request Feature</a>
   </p>
 </p>
-### Algorithms Subject Final Project
+<h4 align="center">Algorithms Subject Final Project</h4>
+
 
 The Sierpinski triangle is a self-similar fractal. It consists of an equilateral triangle, with smaller equilateral triangles recursively removed from its remaining area. Wacław Franciszek Sierpiński (1882 – 1969) was a Polish mathematician.
 
