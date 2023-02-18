@@ -1,7 +1,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/the-guti/Fractal-Generator">
-    <img src="3dfractal.png" alt="Logo" width="385" height="300">
+    <img src="assets/3dfractal.png" alt="Logo" width="385" height="300">
   </a>
 
   <h3 align="center">C++ Fractal Generator</h3>
